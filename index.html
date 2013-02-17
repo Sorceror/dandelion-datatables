@@ -59,22 +59,23 @@ $ git checkout gh-pages
 <p>From :</p>
 
 <pre><code>&lt;dependency&gt;
-    &lt;groupId&gt;com.github.datatables4j&lt;/groupId&gt;
-    &lt;artifactId&gt;datatables4j-core-jsp&lt;/artifactId&gt;
-    &lt;version&gt;0.8.3&lt;/version&gt;
+   &lt;groupId&gt;com.github.datatables4j&lt;/groupId&gt;
+   &lt;artifactId&gt;datatables4j-core-jsp&lt;/artifactId&gt;
+   &lt;version&gt;0.8.3&lt;/version&gt;
 &lt;/dependency&gt;
 </code></pre>
 
 <p>To :</p>
 
 <pre><code>&lt;dependency&gt;
-    &lt;groupId&gt;com.github.dandelion&lt;/groupId&gt;
-    &lt;artifactId&gt;datatables-jsp&lt;/artifactId&gt;
-    &lt;version&gt;0.8.4&lt;/version&gt;
+   &lt;groupId&gt;com.github.dandelion&lt;/groupId&gt;
+   &lt;artifactId&gt;datatables-jsp&lt;/artifactId&gt;
+   &lt;version&gt;0.8.4&lt;/version&gt;
 &lt;/dependency&gt;
 </code></pre>
 
-<p>Ensure to delete all DataTables4j dependencies to avoid classpath conflicts.</p>
+<p><strong>Warning !</strong>
+Ensure to delete all DataTables4j dependencies to avoid classpath conflicts.</p>
 
 <h5>Step 2 : update taglib URI</h5>
 
@@ -93,22 +94,22 @@ $ git checkout gh-pages
 <p>If you were using the <a href="https://github.com/datatables4j/datatables4j-backward-servlet2.x">Servlet2 compatibility module</a>, first ensure to update the dependency from :</p>
 
 <pre><code>&lt;dependency&gt;
-    &lt;groupId&gt;com.github.datatables4j&lt;/groupId&gt;
-    &lt;artifactId&gt;datatables4j-servlet2&lt;/artifactId&gt;
-    &lt;version&gt;0.1.2&lt;/version&gt;
+   &lt;groupId&gt;com.github.datatables4j&lt;/groupId&gt;
+   &lt;artifactId&gt;datatables4j-servlet2&lt;/artifactId&gt;
+   &lt;version&gt;0.1.2&lt;/version&gt;
 &lt;/dependency&gt;
 </code></pre>
 
 <p>To :</p>
 
 <pre><code>&lt;dependency&gt;
-    &lt;groupId&gt;com.github.dandelion&lt;/groupId&gt;
-    &lt;artifactId&gt;datatables-servlet2&lt;/artifactId&gt;
-    &lt;version&gt;0.1.3&lt;/version&gt;
+   &lt;groupId&gt;com.github.dandelion&lt;/groupId&gt;
+   &lt;artifactId&gt;datatables-servlet2&lt;/artifactId&gt;
+   &lt;version&gt;0.1.3&lt;/version&gt;
 &lt;/dependency&gt;
 </code></pre>
 
-<p>Then, ensure to update the qualified class names in <code>web.xml</code> to :</p>
+<p>Then, ensure to update the qualified class names in <code>web.xml</code> :</p>
 
 <pre><code>&lt;!-- Dandelion-datatables servlet definition --&gt;
 &lt;servlet&gt;
@@ -144,9 +145,12 @@ $ git checkout gh-pages
       &lt;bean
         class="com.github.dandelion.datatables.extras.spring3.ajax.DatatablesCriteriasResolver" /&gt;
    &lt;/mvc:argument-resolvers&gt;
+&lt;/mvc:annotation-driven&gt;
 </code></pre>
 
-<p><a href="/mvc:annotation-driven">/mvc:annotation-driven</a></p>
+<h4>Using Thymeleaf</h4>
+
+<p>TODO</p>
       </section>
     </div>
 
