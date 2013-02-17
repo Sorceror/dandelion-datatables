@@ -33,7 +33,7 @@
       <section id="main_content" class="inner">
         <h3>Introduction</h3>
 
-<p><strong>Dandelion-datatables</strong> is a continuation of the previous <a href="http://datatables4j.github.com/docs">DataTables4j</a> project. For now, it's just a simple renaming (and internal structure simplifications also) but in a near future, we will inform you of features and services connected with Dandelion ! </p>
+<p><strong>Dandelion-datatables</strong> is a continuation of the previous <a href="http://datatables4j.github.com/docs">DataTables4j</a> project. For now, it's just a simple renaming (and also internal structure simplifications) but in a near future, we will inform you of features and services connected with Dandelion ! </p>
 
 <p>At the moment, we just ask you to start migrating your apps from DataTables4j to Dandelion-datatables. As you will see in the following section, the workload is quite limited! :-) </p>
 
@@ -110,13 +110,13 @@ Ensure to delete all DataTables4j dependencies to avoid classpath conflicts.</p>
    &lt;url-pattern&gt;/datatablesController/*&lt;/url-pattern&gt;
 &lt;/servlet-mapping&gt;
 
-&lt;!-- DataTables4j filter definition --&gt;
+&lt;!-- Dandelion-datatables filter definition (export feature) --&gt;
 &lt;filter&gt;
    &lt;filter-name&gt;datatablesFilter&lt;/filter-name&gt;
    &lt;filter-class&gt;com.github.dandelion.datatables.extras.servlet2.filter.DatatablesFilter&lt;/filter-class&gt;
 &lt;/filter&gt;
 
-&lt;!-- DataTables4j filter mapping --&gt;
+&lt;!-- Dandelion-datatables filter mapping (export feature) --&gt;
 &lt;filter-mapping&gt;
    &lt;filter-name&gt;datatablesFilter&lt;/filter-name&gt;
    &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
