@@ -50,7 +50,7 @@ $ git checkout gh-pages
 
 <p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
 
-<h3>Migration from DataTables4j to Dandelion-datatables</h3>
+<h3>Migrating from DataTables4j to Dandelion-datatables</h3>
 
 <h4>Using JSP</h4>
 
@@ -74,6 +74,8 @@ $ git checkout gh-pages
 &lt;/dependency&gt;
 </code></pre>
 
+<p>Ensure to delete all DataTables4j dependencies to avoid classpath conflicts.</p>
+
 <h5>Step 2 : update taglib URI</h5>
 
 <p>From :</p>
@@ -85,6 +87,66 @@ $ git checkout gh-pages
 
 <pre><code>&lt;%@ taglib prefix="datatables" uri="http://github.com/dandelion/datatables" %&gt;
 </code></pre>
+
+<h5>Step 3 (optional) : servlet 2.x</h5>
+
+<p>If you were using the <a href="https://github.com/datatables4j/datatables4j-backward-servlet2.x">Servlet2 compatibility module</a>, first ensure to update the dependency from :</p>
+
+<pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;com.github.datatables4j&lt;/groupId&gt;
+    &lt;artifactId&gt;datatables4j-servlet2&lt;/artifactId&gt;
+    &lt;version&gt;0.1.2&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+
+<p>To :</p>
+
+<pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;com.github.dandelion&lt;/groupId&gt;
+    &lt;artifactId&gt;datatables-servlet2&lt;/artifactId&gt;
+    &lt;version&gt;0.1.3&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+
+<p>Then, ensure to update the qualified class names in <code>web.xml</code> to :</p>
+
+<pre><code>&lt;!-- Dandelion-datatables servlet definition --&gt;
+&lt;servlet&gt;
+    &lt;servlet-name&gt;datatablesController&lt;/servlet-name&gt;
+    &lt;servlet-class&gt;com.github.dandelion.datatables.extras.servlet2.servlet.DatatablesServlet&lt;/servlet-class&gt;
+&lt;/servlet&gt;
+
+&lt;!-- Dandelion-datatables servlet mapping --&gt;
+&lt;servlet-mapping&gt;
+    &lt;servlet-name&gt;datatablesController&lt;/servlet-name&gt;
+    &lt;url-pattern&gt;/datatablesController/*&lt;/url-pattern&gt;
+&lt;/servlet-mapping&gt;
+
+&lt;!-- DataTables4j filter definition --&gt;
+&lt;filter&gt;
+    &lt;filter-name&gt;datatablesFilter&lt;/filter-name&gt;
+    &lt;filter-class&gt;com.github.dandelion.datatables.extras.servlet2.filter.DatatablesFilter&lt;/filter-class&gt;
+&lt;/filter&gt;
+
+&lt;!-- DataTables4j filter mapping --&gt;
+&lt;filter-mapping&gt;
+    &lt;filter-name&gt;datatablesFilter&lt;/filter-name&gt;
+    &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+&lt;/filter-mapping&gt;
+</code></pre>
+
+<h5>Step 4 (optional) : Spring 3</h5>
+
+<p>If you were using the <a href="https://github.com/datatables4j/datatables4j-core-parent/tree/master/datatables4j-spring3">Spring 3 extra module</a>(used in server-side processing), ensure to update the qualified class name in you Spring MVC configuration :</p>
+
+<pre><code>&lt;mvc:annotation-driven&gt;
+   &lt;mvc:argument-resolvers&gt;
+      &lt;bean
+        class="com.github.dandelion.datatables.extras.spring3.ajax.DatatablesCriteriasResolver" /&gt;
+   &lt;/mvc:argument-resolvers&gt;
+</code></pre>
+
+<p><a href="/mvc:annotation-driven">/mvc:annotation-driven</a></p>
       </section>
     </div>
 
