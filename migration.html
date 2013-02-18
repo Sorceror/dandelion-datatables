@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="Date-Revision-yyyymmdd" content="20130218" />
     <meta http-equiv="Content-Language" content="en" />
-    <title>Dandelion : Datatables :: Documentation - Project Build Plugins</title>
+    <title>Dandelion : Datatables :: Documentation - </title>
     <link rel="stylesheet" href="./css/apache-maven-fluido-1.3.0.min.css" />
     <link rel="stylesheet" href="./css/site.css" />
     <link rel="stylesheet" href="./css/print.css" media="print" />
@@ -58,7 +58,7 @@
         <div class="container-fluid">
           <div id="banner">
         <div class="pull-left">
-                                                  <a href="./" id="bannerLeft">
+                                    <a href="http://dandelion.github.com/dandelion-datatables/" id="bannerLeft">
                                                                                                 <img src="images/logo_dandelion.png"  alt="Dandelion-DataTables"/>
                 </a>
                       </div>
@@ -136,12 +136,10 @@
             </li>
                               <li class="nav-header">Migration guide</li>
                                 
-      <li>
+      <li class="active">
     
-                          <a href="migration.html" title="Migrating from DataTables4j">
-          <i class="none"></i>
-        Migrating from DataTables4j</a>
-            </li>
+            <a href="#"><i class="none"></i>Migrating from DataTables4j</a>
+          </li>
                               <li class="nav-header">Reference</li>
                                                                                                                                                                                               
       <li>
@@ -171,13 +169,7 @@
           <hr class="divider" />
 
            <div id="poweredBy">
-                   
-    <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
-
-    
-    <div class="g-plusone" data-href="http://dandelion.github.com/dandelion-datatables/" data-size="tall" ></div>
-
-                   <div class="clear"></div>
+                            <div class="clear"></div>
                             <div class="clear"></div>
                
         
@@ -199,7 +191,87 @@
                         
         <div id="bodyColumn"  class="span10" >
                                   
-            <div class="section"><h2>Project Build Plugins<a name="Project_Build_Plugins"></a></h2><a name="Project_Build_Plugins"></a><table border="0" class="table table-striped"><tr class="a"><th>GroupId</th><th>ArtifactId</th><th>Version</th></tr><tr class="b"><td>com.github.github</td><td><a class="externalLink" href="https://github.com/github/maven-plugins">site-maven-plugin</a></td><td>0.7</td></tr><tr class="a"><td>org.apache.maven.plugins</td><td><a class="externalLink" href="http://maven.apache.org/plugins/maven-clean-plugin/">maven-clean-plugin</a></td><td>2.4.1</td></tr><tr class="b"><td>org.apache.maven.plugins</td><td><a class="externalLink" href="http://maven.apache.org/plugins/maven-compiler-plugin/">maven-compiler-plugin</a></td><td>2.3.2</td></tr><tr class="a"><td>org.apache.maven.plugins</td><td><a class="externalLink" href="http://maven.apache.org/plugins/maven-deploy-plugin/">maven-deploy-plugin</a></td><td>2.7</td></tr><tr class="b"><td>org.apache.maven.plugins</td><td><a class="externalLink" href="http://maven.apache.org/plugins/maven-enforcer-plugin/">maven-enforcer-plugin</a></td><td>1.0</td></tr><tr class="a"><td>org.apache.maven.plugins</td><td><a class="externalLink" href="http://maven.apache.org/plugins/maven-install-plugin/">maven-install-plugin</a></td><td>2.3.1</td></tr><tr class="b"><td>org.apache.maven.plugins</td><td><a class="externalLink" href="http://maven.apache.org/plugins/maven-jar-plugin/">maven-jar-plugin</a></td><td>2.3.2</td></tr><tr class="a"><td>org.apache.maven.plugins</td><td><a class="externalLink" href="http://maven.apache.org/plugins/maven-javadoc-plugin/">maven-javadoc-plugin</a></td><td>2.8.1</td></tr><tr class="b"><td>org.apache.maven.plugins</td><td><a class="externalLink" href="http://maven.apache.org/plugins/maven-project-info-reports-plugin/">maven-project-info-reports-plugin</a></td><td>2.5.1</td></tr><tr class="a"><td>org.apache.maven.plugins</td><td><a class="externalLink" href="http://maven.apache.org/plugins/maven-resources-plugin/">maven-resources-plugin</a></td><td>2.5</td></tr><tr class="b"><td>org.apache.maven.plugins</td><td><a class="externalLink" href="http://maven.apache.org/plugins/maven-site-plugin/">maven-site-plugin</a></td><td>3.1</td></tr><tr class="a"><td>org.apache.maven.plugins</td><td><a class="externalLink" href="http://maven.apache.org/plugins/maven-source-plugin/">maven-source-plugin</a></td><td>2.2</td></tr><tr class="b"><td>org.apache.maven.plugins</td><td><a class="externalLink" href="http://maven.apache.org/surefire/maven-surefire-plugin">maven-surefire-plugin</a></td><td>2.10</td></tr></table></div><div class="section"><h2>Project Report Plugins<a name="Project_Report_Plugins"></a></h2><a name="Project_Report_Plugins"></a><p>There are no plugins reports defined in the Reporting part of this project.</p></div>
+            <div class="section"><div class="section"><h3>Migrating from DataTables4j to Dandelion-datatables<a name="Migrating_from_DataTables4j_to_Dandelion-datatables"></a></h3><p><b>Dandelion-datatables</b> is a continuation of the previous <a class="externalLink" href="http://datatables4j.github.com/docs">DataTables4j</a> project. For now, its just a simple renaming (and also internal and transparent structure simplifications) but in a near future, we will inform you of features and services connected with Dandelion! </p><p>At the moment, we just ask you to start migrating your apps from DataTables4j to Dandelion-datatables. As you will see in the following section, the workload is quite limited! :-) </p><p><br /></p><div class="section"><h4>Step 1 : update all your dependencies<a name="Step_1_:_update_all_your_dependencies"></a></h4><p>The following table lists the old and new dependencies.</p>
+<table border="0" class="table table-striped">
+  <thead>
+  	<tr class="a">
+  	  <th>Description</th>
+  	  <th>Maven</th>
+  	  <th>Old</th>
+  	  <th>New</th>
+  	</tr>  
+  </thead>
+  <tbody>
+  	<tr class="b">
+  	  <td>Project groupId</td>
+  	  <td>groupId</td>
+  	  <td>com.github.datatables4j</td>
+  	  <td>com.github.dandelion</td>
+  	</tr>
+  	<tr class="a">
+  	  <td>JSP implementation</td>
+  	  <td>artifactId</td>
+  	  <td>datatables4j-core-jsp</td>
+  	  <td>datatables-jsp</td>
+  	</tr>
+  	<tr class="b">
+  	  <td>Thymeleaf implementation</td>
+  	  <td>artifactId</td>
+  	  <td>datatables4j-core-thymeleaf</td>
+  	  <td>datatables-thymeleaf</td>
+  	</tr>
+  	<tr class="a">
+  	  <td>Servlet2.x backward compatibility extra</td>
+  	  <td>artifactId</td>
+  	  <td>datatables4j-servlet2</td>
+  	  <td>datatables-servlet2</td>
+  	</tr>
+  	<tr class="b">
+  	  <td>Spring3 extra</td>
+  	  <td>artifactId</td>
+  	  <td>datatables4j-spring3</td>
+  	  <td>datatables-spring3</td>
+  	</tr>
+  </tbody>
+</table><p><b>Warning !</b> Ensure to delete all DataTables4j dependencies to avoid classpath conflicts.</p><p><br /></p></div><div class="section"><h4>Step 2 (JSP): update the taglib URI<a name="Step_2_JSP:_update_the_taglib_URI"></a></h4><p>From:</p>
+<div class="source"><pre class="prettyprint">&lt;%@ taglib prefix=&quot;datatables&quot; uri=&quot;http://github.com/datatables4j&quot; %&gt;
+</pre></div><p>To:</p>
+<div class="source"><pre class="prettyprint">&lt;%@ taglib prefix=&quot;datatables&quot; uri=&quot;http://github.com/dandelion/datatables&quot; %&gt;
+</pre></div><p><br /></p></div><div class="section"><h4>Step 2 (Thymeleaf): update the dialect namespace<a name="Step_2_Thymeleaf:_update_the_dialect_namespace"></a></h4><p>From:</p>
+<div class="source"><pre class="prettyprint">&lt;html xmlns:th=&quot;http://www.thymeleaf.org&quot; xmlns:dt=&quot;http://github.com/datatables4j/thymeleaf&quot;&gt;
+</pre></div><p>To:</p>
+<div class="source"><pre class="prettyprint">&lt;html xmlns:th=&quot;http://www.thymeleaf.org&quot; xmlns:dt=&quot;http://github.com/dandelion/datatables&quot;&gt;
+</pre></div><p><br /></p></div><div class="section"><h4>Step 3 (optional) : servlet 2.x<a name="Step_3_optional_:_servlet_2.x"></a></h4><p>If you were using the <a class="externalLink" href="https://github.com/datatables4j/datatables4j-backward-servlet2.x">Servlet2 compatibility module</a>, first ensure to update the corresponding dependency (see above).</p><p>Then, ensure to update the qualified class names in <tt>web.xml</tt> :</p>
+<div class="source"><pre class="prettyprint">&lt;!-- Dandelion-datatables servlet definition --&gt;
+&lt;servlet&gt;
+   &lt;servlet-name&gt;datatablesController&lt;/servlet-name&gt;
+   &lt;servlet-class&gt;com.github.dandelion.datatables.extras.servlet2.servlet.DatatablesServlet&lt;/servlet-class&gt;
+&lt;/servlet&gt;
+
+&lt;!-- Dandelion-datatables servlet mapping --&gt;
+&lt;servlet-mapping&gt;
+   &lt;servlet-name&gt;datatablesController&lt;/servlet-name&gt;
+   &lt;url-pattern&gt;/datatablesController/*&lt;/url-pattern&gt;
+&lt;/servlet-mapping&gt;
+
+&lt;!-- Dandelion-datatables filter definition (export feature) --&gt;
+&lt;filter&gt;
+   &lt;filter-name&gt;datatablesFilter&lt;/filter-name&gt;
+   &lt;filter-class&gt;com.github.dandelion.datatables.extras.servlet2.filter.DatatablesFilter&lt;/filter-class&gt;
+&lt;/filter&gt;
+
+&lt;!-- Dandelion-datatables filter mapping (export feature) --&gt;
+&lt;filter-mapping&gt;
+   &lt;filter-name&gt;datatablesFilter&lt;/filter-name&gt;
+   &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+&lt;/filter-mapping&gt;
+</pre></div><p><br /></p></div><div class="section"><h4>Step 4 (optional) : Spring 3<a name="Step_4_optional_:_Spring_3"></a></h4><p>If you were using the <a class="externalLink" href="https://github.com/datatables4j/datatables4j-core-parent/tree/master/datatables4j-spring3">Spring 3 extra module</a>(used in server-side processing), first ensure to update the corresponding dependency (see above). </p><p>Then, ensure to update the qualified class name in you Spring MVC configuration:</p>
+<div class="source"><pre class="prettyprint">&lt;mvc:annotation-driven&gt;
+    &lt;mvc:argument-resolvers&gt;
+        &lt;bean class=&quot;com.github.dandelion.datatables.extras.spring3.ajax.DatatablesCriteriasResolver&quot; /&gt;
+    &lt;/mvc:argument-resolvers&gt;
+&lt;/mvc:annotation-driven&gt;
+</pre></div></div></div></div>
                   </div>
             </div>
           </div>

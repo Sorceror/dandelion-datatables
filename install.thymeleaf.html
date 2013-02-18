@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="Date-Revision-yyyymmdd" content="20130218" />
     <meta http-equiv="Content-Language" content="en" />
-    <title>Dandelion : Datatables :: Documentation - Project Build Plugins</title>
+    <title>Dandelion : Datatables :: Documentation - </title>
     <link rel="stylesheet" href="./css/apache-maven-fluido-1.3.0.min.css" />
     <link rel="stylesheet" href="./css/site.css" />
     <link rel="stylesheet" href="./css/print.css" media="print" />
@@ -58,7 +58,7 @@
         <div class="container-fluid">
           <div id="banner">
         <div class="pull-left">
-                                                  <a href="./" id="bannerLeft">
+                                    <a href="http://dandelion.github.com/dandelion-datatables/" id="bannerLeft">
                                                                                                 <img src="images/logo_dandelion.png"  alt="Dandelion-DataTables"/>
                 </a>
                       </div>
@@ -99,13 +99,27 @@
           <i class="none"></i>
         Home</a>
             </li>
-                                                                                      
+                                                                                                
       <li>
     
                           <a href="install.html" title="Install">
-          <i class="icon-chevron-right"></i>
+          <i class="icon-chevron-down"></i>
         Install</a>
-                  </li>
+                    <ul class="nav nav-list">
+                      
+      <li>
+    
+                          <a href="install.jsp.html" title="JSP taglib">
+          <i class="none"></i>
+        JSP taglib</a>
+            </li>
+                      
+      <li class="active">
+    
+            <a href="#"><i class="none"></i>Thymeleaf</a>
+          </li>
+              </ul>
+        </li>
                   
       <li>
     
@@ -171,13 +185,7 @@
           <hr class="divider" />
 
            <div id="poweredBy">
-                   
-    <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
-
-    
-    <div class="g-plusone" data-href="http://dandelion.github.com/dandelion-datatables/" data-size="tall" ></div>
-
-                   <div class="clear"></div>
+                            <div class="clear"></div>
                             <div class="clear"></div>
                
         
@@ -199,7 +207,79 @@
                         
         <div id="bodyColumn"  class="span10" >
                                   
-            <div class="section"><h2>Project Build Plugins<a name="Project_Build_Plugins"></a></h2><a name="Project_Build_Plugins"></a><table border="0" class="table table-striped"><tr class="a"><th>GroupId</th><th>ArtifactId</th><th>Version</th></tr><tr class="b"><td>com.github.github</td><td><a class="externalLink" href="https://github.com/github/maven-plugins">site-maven-plugin</a></td><td>0.7</td></tr><tr class="a"><td>org.apache.maven.plugins</td><td><a class="externalLink" href="http://maven.apache.org/plugins/maven-clean-plugin/">maven-clean-plugin</a></td><td>2.4.1</td></tr><tr class="b"><td>org.apache.maven.plugins</td><td><a class="externalLink" href="http://maven.apache.org/plugins/maven-compiler-plugin/">maven-compiler-plugin</a></td><td>2.3.2</td></tr><tr class="a"><td>org.apache.maven.plugins</td><td><a class="externalLink" href="http://maven.apache.org/plugins/maven-deploy-plugin/">maven-deploy-plugin</a></td><td>2.7</td></tr><tr class="b"><td>org.apache.maven.plugins</td><td><a class="externalLink" href="http://maven.apache.org/plugins/maven-enforcer-plugin/">maven-enforcer-plugin</a></td><td>1.0</td></tr><tr class="a"><td>org.apache.maven.plugins</td><td><a class="externalLink" href="http://maven.apache.org/plugins/maven-install-plugin/">maven-install-plugin</a></td><td>2.3.1</td></tr><tr class="b"><td>org.apache.maven.plugins</td><td><a class="externalLink" href="http://maven.apache.org/plugins/maven-jar-plugin/">maven-jar-plugin</a></td><td>2.3.2</td></tr><tr class="a"><td>org.apache.maven.plugins</td><td><a class="externalLink" href="http://maven.apache.org/plugins/maven-javadoc-plugin/">maven-javadoc-plugin</a></td><td>2.8.1</td></tr><tr class="b"><td>org.apache.maven.plugins</td><td><a class="externalLink" href="http://maven.apache.org/plugins/maven-project-info-reports-plugin/">maven-project-info-reports-plugin</a></td><td>2.5.1</td></tr><tr class="a"><td>org.apache.maven.plugins</td><td><a class="externalLink" href="http://maven.apache.org/plugins/maven-resources-plugin/">maven-resources-plugin</a></td><td>2.5</td></tr><tr class="b"><td>org.apache.maven.plugins</td><td><a class="externalLink" href="http://maven.apache.org/plugins/maven-site-plugin/">maven-site-plugin</a></td><td>3.1</td></tr><tr class="a"><td>org.apache.maven.plugins</td><td><a class="externalLink" href="http://maven.apache.org/plugins/maven-source-plugin/">maven-source-plugin</a></td><td>2.2</td></tr><tr class="b"><td>org.apache.maven.plugins</td><td><a class="externalLink" href="http://maven.apache.org/surefire/maven-surefire-plugin">maven-surefire-plugin</a></td><td>2.10</td></tr></table></div><div class="section"><h2>Project Report Plugins<a name="Project_Report_Plugins"></a></h2><a name="Project_Report_Plugins"></a><p>There are no plugins reports defined in the Reporting part of this project.</p></div>
+            <p><link rel="stylesheet" href="./css/bootstrap.min.css" /></p><p><a class="externalLink" href="http://www.thymeleaf.org"><img src="./images/logo_thymeleaflogonamesmall.png" style="float:right; margin-right: 10px;" width="400px" height="90px" alt="" /></a> <div class="section"><div class="section"><h3>Installation guide with Thymeleaf<a name="Installation_guide_with_Thymeleaf"></a></h3> <hr /></p>
+<div class="section"><h4>With Servlet 3.x compatible containers<a name="With_Servlet_3.x_compatible_containers"></a></h4>
+<div class="section"><h5>Step 1 : Install the Dandelion-DataTables JARs<a name="Step_1_:_Install_the_Dandelion-DataTables_JARs"></a></h5>
+<div class="section"><h6>Manually<a name="Manually"></a></h6><p>Download the JARs (see <a href="./download.html">here</a>) and make sure that they are all made available via the application classpath. (Usually in <b>WEB-INF/lib</b>)</p>
+</div><div class="section"><h6>Using Maven (or Maven-compatible dependency managers)<a name="Using_Maven_or_Maven-compatible_dependency_managers"></a></h6><p>Just add the following dependency :</p>
+<div class="source"><pre class="prettyprint">&lt;dependency&gt;
+    &lt;groupId&gt;com.github.dandelion&lt;/groupId&gt;
+    &lt;artifactId&gt;datatables-thymeleaf&lt;/artifactId&gt;
+    &lt;version&gt;0.8.4-SNAPSHOT&lt;/version&gt;
+&lt;/dependency&gt;
+</pre></div>
+</div></div><div class="section"><h5>Step 2 : Declare the Dandelion-DataTables dialect<a name="Step_2_:_Declare_the_Dandelion-DataTables_dialect"></a></h5><p>If you're using Spring / Spring MVC, update the SpringTemplateEngine bean :</p>
+<div class="source"><pre class="prettyprint">&lt;bean id=&quot;templateEngine&quot; class=&quot;org.thymeleaf.spring3.SpringTemplateEngine&quot;&gt;
+    &lt;property name=&quot;templateResolver&quot; ref=&quot;templateResolver&quot; /&gt;
+    &lt;property name=&quot;additionalDialects&quot;&gt;
+        &lt;set&gt;
+            &lt;bean class=&quot;com.github.dandelion.datatables.thymeleaf.dialect.DataTablesDialect&quot; /&gt;
+        &lt;/set&gt;
+    &lt;/property&gt;
+&lt;/bean&gt;
+</pre></div><p>If not, add the DataTablesDialect to your existing Thymeleaf template engine :</p>
+<div class="source"><pre class="prettyprint">ServletContextTemplateResolver templateresolver = new ServletContextTemplateResolver();
+templateresolver.setTemplateMode(&quot;HTML5&quot;);
+
+templateengine = new TemplateEngine();
+templateengine.setTemplateResolver(templateresolver);
+templateengine.addDialect(new DataTablesDialect());
+</pre></div>
+</div><div class="section"><h5>Step 3 : Add the namespace declaration<a name="Step_3_:_Add_the_namespace_declaration"></a></h5><p>Everywhere you want to display a table using <b>Dandelion-DataTables</b>, you need to add the following namespace declaration :</p>
+<div class="source"><pre class="prettyprint">&lt;html xmlns:th=&quot;http://www.thymeleaf.org&quot; xmlns:dt=&quot;http://github.com/dandelion/datatables&quot;&gt;
+</pre></div>
+</div><div class="section"><h5>Step 4 : Include client-side dependencies<a name="Step_4_:_Include_client-side_dependencies"></a></h5><p>By default, the Javascript libraries are not embedded in <b>Dandelion-DataTables</b>. So ensure you declared somewhere in your pages those <tt>script</tt> and <tt>link</tt> tags :</p>
+<div class="source"><pre class="prettyprint">&lt;!-- DataTables --&gt;
+&lt;link href=&quot;pathToCss/jquery.dataTables.css&quot; rel=&quot;stylesheet&quot;&gt;
+&lt;script src=&quot;pathToJs/jquery.dataTables.min.js&quot;&gt;&lt;/script&gt; 
+
+&lt;!-- jQuery --&gt;
+&lt;script src=&quot;pathToJs/jquery-1.8.3.min.js&quot;&gt;&lt;/script&gt;
+</pre></div>
+<p class="alert alert-info"><b>Info !</b><br /> Actually, you can bypass the DataTables script and link tags using the <a href="./ref.tmltable.html">cdn</a> attribute of the table tag.</p><p>You can now begin using the DataTablesDialect ! :-)</p><p><br /> </div></div><div class="section"><h4>With Servlet 2.x compatible containers<a name="With_Servlet_2.x_compatible_containers"></a></h4></p>
+<div class="section"><h5>Steps 1/2/3/4<a name="Steps_1234"></a></h5><p>You need to follow the first four steps described above.</p>
+</div><div class="section"><h5>Step 5 : Add the following additionnal dependency<a name="Step_5_:_Add_the_following_additionnal_dependency"></a></h5>
+<div class="source"><pre class="prettyprint">&lt;dependency&gt;
+    &lt;groupId&gt;com.github.dandelion&lt;/groupId&gt;
+    &lt;artifactId&gt;datatables-servlet2&lt;/artifactId&gt;
+    &lt;version&gt;${backwardServlet2Version}&lt;/version&gt;
+&lt;/dependency&gt;
+</pre></div>
+</div><div class="section"><h5>Step 6 : Add the DataTables4j servlet and filter definitions<a name="Step_6_:_Add_the_DataTables4j_servlet_and_filter_definitions"></a></h5><p>Add the following configuration to your <tt>web.xml</tt> :</p>
+<div class="source"><pre class="prettyprint">&lt;!-- DataTables4j servlet definition --&gt;
+&lt;servlet&gt;
+    &lt;servlet-name&gt;datatablesController&lt;/servlet-name&gt;
+    &lt;servlet-class&gt;com.github.dandelion.datatables.extras.servlet2.servlet.DatatablesServlet&lt;/servlet-class&gt;
+&lt;/servlet&gt;
+
+&lt;!-- DataTables4j servlet mapping --&gt;
+&lt;servlet-mapping&gt;
+    &lt;servlet-name&gt;datatablesController&lt;/servlet-name&gt;
+    &lt;url-pattern&gt;/datatablesController/*&lt;/url-pattern&gt;
+&lt;/servlet-mapping&gt;
+
+&lt;!-- DataTables4j filter definition --&gt;
+&lt;filter&gt;
+    &lt;filter-name&gt;datatablesFilter&lt;/filter-name&gt;
+    &lt;filter-class&gt;com.github.dandelion.datatables.extras.servlet2.filter.DatatablesFilter&lt;/filter-class&gt;
+&lt;/filter&gt;
+
+&lt;!-- DataTables4j filter mapping --&gt;
+&lt;filter-mapping&gt;
+    &lt;filter-name&gt;datatablesFilter&lt;/filter-name&gt;
+    &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+&lt;/filter-mapping&gt;
+</pre></div><p><br /> </div></div><div class="section"><h4>Optional step : Add a Dandelion-DataTables custom configuration file<a name="Optional_step_:_Add_a_Dandelion-DataTables_custom_configuration_file"></a></h4></p><p>See the <a href="./ref.properties.html">properties reference</a> to see more details !</p></div></div></div>
                   </div>
             </div>
           </div>
