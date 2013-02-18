@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="Date-Revision-yyyymmdd" content="20130218" />
     <meta http-equiv="Content-Language" content="en" />
-    <title>Dandelion : Datatables :: Parent - </title>
+    <title>Dandelion : Datatables :: Core - About</title>
     <link rel="stylesheet" href="./css/apache-maven-fluido-1.3.0.min.css" />
     <link rel="stylesheet" href="./css/site.css" />
     <link rel="stylesheet" href="./css/print.css" media="print" />
@@ -24,21 +24,7 @@
         
 <script src="./js/site_custom.js" type="text/javascript"></script>
           
-              <!-- Google Analytics -->
-    <script type="text/javascript">
-
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-33818546-7']);
-      _gaq.push(['_trackPageview']);
-
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-
-    </script>
-    </head>
+            </head>
         <body class="topBarDisabled">
           
     
@@ -91,78 +77,7 @@
                 
             
                 <ul class="nav nav-list">
-                    <li class="nav-header">Overview</li>
-                                
-      <li class="active">
-    
-            <a href="#"><i class="none"></i>Home</a>
-          </li>
-                                                                                      
-      <li>
-    
-                          <a href="install.html" title="Install">
-          <i class="icon-chevron-right"></i>
-        Install</a>
-                  </li>
-                  
-      <li>
-    
-                          <a href="changelog.html" title="Changelog">
-          <i class="none"></i>
-        Changelog</a>
-            </li>
-                  
-      <li>
-    
-                          <a href="roadmap.html" title="Roadmap">
-          <i class="none"></i>
-        Roadmap</a>
-            </li>
-                  
-      <li>
-    
-                          <a href="forum.html" title="Forum">
-          <i class="none"></i>
-        Forum</a>
-            </li>
-                  
-      <li>
-    
-                          <a href="download.html" title="Download">
-          <i class="none"></i>
-        Download</a>
-            </li>
-                              <li class="nav-header">Migration guide</li>
-                                
-      <li>
-    
-                          <a href="migration.html" title="Migrating from DataTables4j">
-          <i class="none"></i>
-        Migrating from DataTables4j</a>
-            </li>
-                              <li class="nav-header">Reference</li>
-                                                                                                                                                                                              
-      <li>
-    
-                          <a href="ref.taglib.html" title="JSP taglib">
-          <i class="icon-chevron-right"></i>
-        JSP taglib</a>
-                  </li>
-                                                                                                        
-      <li>
-    
-                          <a href="ref.thymeleaf.html" title="Thymeleaf dialect">
-          <i class="icon-chevron-right"></i>
-        Thymeleaf dialect</a>
-                  </li>
-                  
-      <li>
-    
-                          <a href="ref.properties.html" title="Configuration properties">
-          <i class="none"></i>
-        Configuration properties</a>
-            </li>
-            </ul>
+  </ul>
                 
             
                 
@@ -173,7 +88,7 @@
     <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
 
     
-    <div class="g-plusone" data-href="http://nexus.sonatype.org/oss-repository-hosting.html/dandelion-datatables" data-size="tall" ></div>
+    <div class="g-plusone" data-href="http://nexus.sonatype.org/oss-repository-hosting.html/dandelion-datatables/datatables-core" data-size="tall" ></div>
 
                    <div class="clear"></div>
                             <div class="clear"></div>
@@ -197,43 +112,7 @@
                         
         <div id="bodyColumn"  class="span10" >
                                   
-            <p><img src="./images/logo_DataTables.jpg" style="float: right;" alt="" /></p><p><b>Dandelion-DataTables</b> is a component of the free and Open Source web framework <a class="externalLink" href="http://dandelion.github.com/">Dandelion</a>. <br /> It allows you to quickly create full-featured HTML table based on the amazing <a class="externalLink" href="http://datatables.net" title="DataTables">DataTables</a> jQuery plugin.</p><p>Writing table in your Java/JEE based web application has never been so easy thanks to all the features (compression, aggregation, export), themes, plugins and template engines integration : JSP and <a class="externalLink" href="http://www.thymeleaf.org">Thymeleaf</a>! </p><p><br /> <div class="section"><div class="section"><div class="section"><h4>How to use it?<a name="How_to_use_it"></a></h4> <br /> <div class="section"><h5>With JSP taglib<a name="With_JSP_taglib"></a></h5> Quiet simply. Once the taglib definition included in your JSP, write the following lines :</p>
-<div class="source"><pre class="prettyprint">&lt;datatables:table id=&quot;myTableId&quot; data=&quot;${persons}&quot;&gt;
-    &lt;datatables:column title=&quot;Id&quot; property=&quot;id&quot; /&gt;
-    &lt;datatables:column title=&quot;FirstName&quot; property=&quot;firstName&quot; /&gt;
-    &lt;datatables:column title=&quot;LastName&quot; property=&quot;lastName&quot; /&gt;
-    &lt;datatables:column title=&quot;Street&quot; property=&quot;address.street1&quot; /&gt;
-    &lt;datatables:column title=&quot;Mail&quot; property=&quot;mail&quot; /&gt;
-&lt;/datatables:table&gt;
-</pre></div>
-</div><div class="section"><h5>With Thymeleaf<a name="With_Thymeleaf"></a></h5><p>Quiet simply too! Once the <b>Dandelion-DataTables</b> dialect and the namespace declaration added, write the following lines :</p>
-<div class="source"><pre class="prettyprint">&lt;table id=&quot;myTableId&quot; dt:table=&quot;true&quot;&gt;
-    &lt;thead&gt;
-        &lt;tr&gt;
-            &lt;th&gt;Id&lt;/th&gt;
-            &lt;th&gt;Firstname&lt;/th&gt;
-            &lt;th&gt;Lastname&lt;/th&gt;
-            &lt;th&gt;Street&lt;/th&gt;
-            &lt;th&gt;Mail&lt;/th&gt;
-        &lt;/tr&gt;
-    &lt;/thead&gt;
-    &lt;tbody&gt;
-        &lt;tr th:each=&quot;person : ${persons}&quot;&gt;
-            &lt;td th:text=&quot;${person.id}&quot;&gt;1&lt;/td&gt;
-            &lt;td th:text=&quot;${person.firstName}&quot;&gt;John&lt;/td&gt;
-            &lt;td th:text=&quot;${person.lastName}&quot;&gt;Doe&lt;/td&gt;
-            &lt;td th:text=&quot;${person.address.street1}&quot;&gt;Nobody knows !&lt;/td&gt;
-            &lt;td th:text=&quot;${person.mail}&quot;&gt;john@doe.com&lt;/td&gt;
-        &lt;/tr&gt;
-    &lt;/tbody&gt;
-&lt;/table&gt;
-</pre></div>
-</div><div class="section"><h5>Result<a name="Result"></a></h5><p>As a result, you'll have the following full-featured HTML table!</p>
-<table border="0" class="table table-striped" id="exampleTable"><thead><tr class="a"><th>Id</th><th>FirstName</th><th>LastName</th><th>Street</th><th>Mail</th></tr></thead><tfoot><tr class="b"><th></th><th></th><th></th><th></th><th></th></tr></tfoot><tbody><tr class="a"><td>1</td><td>Selma</td><td>Maldonado</td><td>Ap #351-1812 Eu, Ave</td><td>venenatis@Duisvolutpat.com</td></tr><tr class="b"><td>2</td><td>Vanna</td><td>Salas</td><td>947-3605 Feugiat. St.</td><td>bibendum.fermentum.metus@ante.ca</td></tr><tr class="a"><td>3</td><td>Noble</td><td>Rosales</td><td>1389 Aliquam, St.</td><td>Duis.cursus.diam@dolorelitpellentesque.ca</td></tr><tr class="b"><td>4</td><td>Nehru</td><td>Gonzalez</td><td>P.O. Box 374, 9474 Lacinia Street</td><td>tellus.non.magna@pede.edu</td></tr><tr class="a"><td>5</td><td>Calista</td><td>Hill</td><td>8966 Eu Road</td><td>enim.Etiam.imperdiet@sitametrisus.co.uk</td></tr><tr class="b"><td>6</td><td>Chava</td><td>Wilder</td><td>317-8683 Ligula. St.</td><td>lacus.vestibulum@incursus.edu</td></tr><tr class="a"><td>7</td><td>Oliver</td><td>Rivas</td><td>6489 Sed Ave</td><td>velit@pedemalesuada.co.uk</td></tr><tr class="b"><td>8</td><td>Lila</td><td>Morrow</td><td>8438 Viverra. Ave</td><td>Mauris.eu.turpis@In.ca</td></tr><tr class="a"><td>9</td><td>Yen</td><td>Vargas</td><td>P.O. Box 722, 6079 Eu St.</td><td>odio@Donec.net</td></tr><tr class="b"><td>10</td><td>Lee</td><td>Graves</td><td>211-4991 Dictum Road</td><td>velit@vitae.co.uk</td></tr><tr class="a"><td>11</td><td>Shelby</td><td>Cabrera</td><td>8307 Vehicula. St.</td><td>magna.a.tortor@lobortisrisusIn.ca</td></tr><tr class="b"><td>12</td><td>Demetrius</td><td>Barber</td><td>5637 Vitae Street</td><td>lectus.Cum.sociis@egestasligula.org</td></tr><tr class="a"><td>13</td><td>Joelle</td><td>Peck</td><td>8552 Placerat, St.</td><td>urna.suscipit.nonummy@diam.com</td></tr><tr class="b"><td>14</td><td>Fredericka</td><td>Pena</td><td>5132 Venenatis Road</td><td>Sed.pharetra.felis@litoratorquentper.edu</td></tr><tr class="a"><td>15</td><td>Susan</td><td>Hensley</td><td>8331 Est, Street</td><td>mus.Aenean@inaliquetlobortis.org</td></tr><tr class="b"><td>16</td><td>Ivana</td><td>Day</td><td>P.O. Box 629, 6589 Ultrices Avenue</td><td>urna.Vivamus@natoquepenatibus.net</td></tr><tr class="a"><td>17</td><td>Lilah</td><td>Pena</td><td>P.O. Box 782, 3437 Cursus. Ave</td><td>nec@Sed.com</td></tr><tr class="b"><td>18</td><td>Gabriel</td><td>Morse</td><td>542-8737 Convallis Street</td><td>pellentesque.tellus@Seddictum.com</td></tr><tr class="a"><td>19</td><td>McKenzie</td><td>Mejia</td><td>435-3099 Porta Av.</td><td>velit@arcu.co.uk</td></tr><tr class="b"><td>20</td><td>Joy</td><td>Hernandez</td><td>967-1885 Tempor Av.</td><td>est@necmollisvitae.com</td></tr><tr class="a"><td>21</td><td>Logan</td><td>Velazquez</td><td>P.O. Box 283, 1560 Aenean Avenue</td><td>Mauris@urnajusto.org</td></tr><tr class="b"><td>22</td><td>Paki</td><td>Carpenter</td><td>P.O. Box 562, 9899 Adipiscing Road</td><td>nibh.lacinia.orci@odiovel.org</td></tr><tr class="a"><td>23</td><td>Boris</td><td>Mclaughlin</td><td>P.O. Box 403, 525 Sem Street</td><td>eros@purusNullamscelerisque.co.uk</td></tr><tr class="b"><td>24</td><td>Ainsley</td><td>Henry</td><td>P.O. Box 322, 1581 Etiam Rd.</td><td>mauris.sagittis.placerat@sitametluctus.co.uk</td></tr><tr class="a"><td>25</td><td>Lars</td><td>Weiss</td><td>213-957 Ornare Street</td><td>lacus@nisi.edu</td></tr><tr class="b"><td>26</td><td>Amery</td><td>Richardson</td><td>Ap #917-7801 Metus. Road</td><td>eget.laoreet@morbitristiquesenectus.org</td></tr><tr class="a"><td>27</td><td>Ivy</td><td>Wagner</td><td>699-6077 Egestas. Road</td><td>magna@massa.ca</td></tr><tr class="b"><td>28</td><td>Kaitlin</td><td>Hooper</td><td>P.O. Box 577, 1556 Pede, Avenue</td><td>volutpat.Nulla@risusQuisquelibero.org</td></tr><tr class="a"><td>29</td><td>Grady</td><td>Fox</td><td>323-922 Lorem Street</td><td>Nulla@lectusconvallisest.net</td></tr><tr class="b"><td>30</td><td>Jesse</td><td>Trujillo</td><td>P.O. Box 977, 8437 Non Street</td><td>nec.cursus@mollisnec.org</td></tr><tr class="a"><td>31</td><td>Anika</td><td>Franco</td><td>Ap #150-496 Tellus Rd.</td><td>vel@sed.com</td></tr><tr class="b"><td>32</td><td>Haviva</td><td>Lewis</td><td>872-4546 Egestas. St.</td><td>dignissim.magna.a@faucibusMorbi.ca</td></tr><tr class="a"><td>33</td><td>Gisela</td><td>Clayton</td><td>659-3340 Litora Road</td><td>volutpat.nunc@ipsumSuspendissenon.co.uk</td></tr><tr class="b"><td>34</td><td>Quinn</td><td>Nielsen</td><td>P.O. Box 249, 7823 Elementum, Rd.</td><td>Cras.vulputate@magna.ca</td></tr><tr class="a"><td>35</td><td>Samantha</td><td>Alexander</td><td>P.O. Box 915, 3911 Cursus Avenue</td><td>Curae;.Phasellus.ornare@loremDonec.ca</td></tr><tr class="b"><td>36</td><td>Sage</td><td>Hurley</td><td>3580 Metus St.</td><td>non@lectusNullamsuscipit.co.uk</td></tr><tr class="a"><td>37</td><td>Leslie</td><td>Coleman</td><td>Ap #465-5758 Sed Avenue</td><td>convallis.convallis@dapibus.edu</td></tr><tr class="b"><td>38</td><td>Gil</td><td>Garza</td><td>548-8537 Imperdiet Ave</td><td>nunc.nulla.vulputate@vulputatenisi.com</td></tr><tr class="a"><td>39</td><td>Richard</td><td>Grimes</td><td>571 Tempus St.</td><td>mi.Aliquam.gravida@dictum.org</td></tr><tr class="b"><td>40</td><td>Xavier</td><td>Hebert</td><td>959-1515 Quis Av.</td><td>dictum.eu.placerat@Aliquamfringilla.net</td></tr><tr class="a"><td>41</td><td>Laurel</td><td>Newman</td><td>Ap #311-3077 Lacus Rd.</td><td>et@aliquetlibero.ca</td></tr><tr class="b"><td>42</td><td>Grace</td><td>Robinson</td><td>Ap #347-1394 Eget Rd.</td><td>lobortis.augue.scelerisque@Etiamvestibulum.com</td></tr><tr class="a"><td>43</td><td>Holly</td><td>Terry</td><td>Ap #437-6599 Tempor Ave</td><td>In@sollicitudina.edu</td></tr><tr class="b"><td>44</td><td>Lael</td><td>Simmons</td><td>5541 Dis St.</td><td>eu@pellentesquemassa.net</td></tr><tr class="a"><td>45</td><td>Chelsea</td><td>Schroeder</td><td>943-9091 Urna. Av.</td><td>ligula@rutrumurnanec.com</td></tr><tr class="b"><td>46</td><td>Isabella</td><td>Poole</td><td>P.O. Box 853, 7299 Ornare, Road</td><td>mattis.semper@iaculisaliquet.net</td></tr><tr class="a"><td>47</td><td>Marvin</td><td>Carpenter</td><td>8116 Metus. Rd.</td><td>nulla.Integer@inaliquet.org</td></tr><tr class="b"><td>48</td><td>Steel</td><td>Ruiz</td><td>P.O. Box 447, 5754 Montes, Ave</td><td>odio.Phasellus.at@Nullamsuscipit.org</td></tr><tr class="a"><td>49</td><td>Dennis</td><td>Black</td><td>P.O. Box 487, 4030 Massa Avenue</td><td>quam@bibendum.org</td></tr><tr class="b"><td>50</td><td>Mari</td><td>Gill</td><td>2170 Pellentesque Avenue</td><td>facilisis.non.bibendum@insodales.ca</td></tr><tr class="a"><td>51</td><td>Jared</td><td>Wolfe</td><td>375 Amet, Road</td><td>Sed.auctor.odio@euturpis.ca</td></tr><tr class="b"><td>52</td><td>Uriel</td><td>Walter</td><td>P.O. Box 143, 9222 Fermentum Ave</td><td>Cras.interdum@Crasdictum.edu</td></tr><tr class="a"><td>53</td><td>Ahmed</td><td>Heath</td><td>5457 Vivamus Rd.</td><td>mi.pede.nonummy@erosturpis.com</td></tr><tr class="b"><td>54</td><td>Wilma</td><td>James</td><td>Ap #420-8962 Ut Avenue</td><td>Vestibulum.ut.eros@rhoncusNullamvelit.net</td></tr><tr class="a"><td>55</td><td>Sybill</td><td>Conley</td><td>Ap #327-962 Lacinia. Av.</td><td>id@estvitaesodales.net</td></tr><tr class="b"><td>56</td><td>Kristen</td><td>Sampson</td><td>3345 Facilisis St.</td><td>parturient.montes.nascetur@infelisNulla.net</td></tr><tr class="a"><td>57</td><td>Chester</td><td>Peck</td><td>379-696 Interdum. Road</td><td>ultrices@sapienCras.ca</td></tr><tr class="b"><td>58</td><td>Samson</td><td>Moran</td><td>P.O. Box 668, 6707 Et Av.</td><td>Proin.sed.turpis@leoelementumsem.co.uk</td></tr><tr class="a"><td>59</td><td>Indigo</td><td>Parker</td><td>7470 Id, Rd.</td><td>ante@tacitisociosqu.org</td></tr><tr class="b"><td>60</td><td>Dai</td><td>George</td><td>7623 Faucibus Av.</td><td>pede.Cum.sociis@temporbibendum.org</td></tr><tr class="a"><td>61</td><td>Shelley</td><td>Hickman</td><td>311-2493 Dictum St.</td><td>dis.parturient@Maurisblandit.org</td></tr><tr class="b"><td>62</td><td>Jennifer</td><td>Ramirez</td><td>489 Luctus Ave</td><td>convallis.convallis@pedeultricesa.edu</td></tr><tr class="a"><td>63</td><td>Claire</td><td>Pruitt</td><td>570-6292 Cras St.</td><td>velit@augueeu.ca</td></tr><tr class="b"><td>64</td><td>Raja</td><td>Stuart</td><td>9253 Sit Av.</td><td>dapibus@Sed.com</td></tr><tr class="a"><td>65</td><td>Alika</td><td>Wells</td><td>449-1169 Eu Street</td><td>sit.amet.diam@aliquetdiamSed.com</td></tr><tr class="b"><td>66</td><td>Lynn</td><td>Holloway</td><td>P.O. Box 609, 8735 Luctus Av.</td><td>purus@enimconsequatpurus.com</td></tr><tr class="a"><td>67</td><td>Meredith</td><td>Shaw</td><td>P.O. Box 441, 5797 Sem Rd.</td><td>mauris.sagittis.placerat@idnuncinterdum.ca</td></tr><tr class="b"><td>68</td><td>Brennan</td><td>Paul</td><td>P.O. Box 160, 8976 Sagittis Ave</td><td>facilisis.lorem.tristique@vulputateposuerevulputate.co.uk</td></tr><tr class="a"><td>69</td><td>Berk</td><td>Reynolds</td><td>P.O. Box 462, 8364 Interdum. Ave</td><td>consequat.nec.mollis@nequetellusimperdiet.ca</td></tr><tr class="b"><td>70</td><td>Hedy</td><td>Atkins</td><td>P.O. Box 826, 8259 Dolor St.</td><td>risus.Duis.a@vitaediam.com</td></tr><tr class="a"><td>71</td><td>Raya</td><td>Hunt</td><td>Ap #877-9986 Velit Street</td><td>in@velquam.ca</td></tr><tr class="b"><td>72</td><td>Darrel</td><td>Potter</td><td>Ap #863-9991 Mauris. Ave</td><td>venenatis.a.magna@felisDonectempor.org</td></tr><tr class="a"><td>73</td><td>Robert</td><td>Cortez</td><td>9832 Quisque Road</td><td>eget@Ut.edu</td></tr><tr class="b"><td>74</td><td>Reese</td><td>Joyner</td><td>7272 Ac Av.</td><td>Morbi.accumsan@parturientmontes.ca</td></tr><tr class="a"><td>75</td><td>Jeanette</td><td>Park</td><td>P.O. Box 386, 6684 Donec Ave</td><td>pede.ac.urna@ipsumdolorsit.edu</td></tr><tr class="b"><td>76</td><td>Alice</td><td>Foreman</td><td>Ap #456-5148 At Street</td><td>lorem.eu@feugiat.edu</td></tr><tr class="a"><td>77</td><td>Lana</td><td>Pacheco</td><td>Ap #764-4979 Sem Street</td><td>elit.pellentesque@urnaconvalliserat.org</td></tr><tr class="b"><td>78</td><td>Fitzgerald</td><td>Dorsey</td><td>P.O. Box 697, 8717 Pede. St.</td><td>nulla.Donec@idnuncinterdum.org</td></tr><tr class="a"><td>79</td><td>Amy</td><td>Marshall</td><td>Ap #481-1909 A Av.</td><td>ad.litora@egestasAliquam.net</td></tr><tr class="b"><td>80</td><td>Dean</td><td>Boyer</td><td>723-8147 Nullam Rd.</td><td>Nunc@uterosnon.com</td></tr><tr class="a"><td>81</td><td>Madeline</td><td>Fernandez</td><td>541-6418 Tincidunt Ave</td><td>Proin.sed.turpis@Nulladignissim.com</td></tr><tr class="b"><td>82</td><td>Tashya</td><td>Horton</td><td>Ap #825-7771 Cum Av.</td><td>Maecenas.malesuada@Aliquamtinciduntnunc.com</td></tr><tr class="a"><td>83</td><td>Genevieve</td><td>Yang</td><td>962-5661 Libero. St.</td><td>molestie@primis.co.uk</td></tr><tr class="b"><td>84</td><td>Kiona</td><td>Gates</td><td>Ap #438-8624 Urna Av.</td><td>velit.Cras@lobortis.edu</td></tr><tr class="a"><td>85</td><td>Xaviera</td><td>Guerrero</td><td>386-2394 Sem Rd.</td><td>ac.turpis@ipsumac.co.uk</td></tr><tr class="b"><td>86</td><td>Raja</td><td>Frederick</td><td>506-4514 Urna Road</td><td>id@incursuset.ca</td></tr><tr class="a"><td>87</td><td>Andrew</td><td>Langley</td><td>222-4261 A Ave</td><td>lorem.ipsum.sodales@vulputateullamcorper.org</td></tr><tr class="b"><td>88</td><td>Phelan</td><td>Hicks</td><td>209-4174 Vehicula Rd.</td><td>volutpat.Nulla.dignissim@Phasellus.com</td></tr><tr class="a"><td>89</td><td>Glenna</td><td>Bright</td><td>P.O. Box 570, 2040 Dictum Street</td><td>sagittis.felis@orci.net</td></tr><tr class="b"><td>90</td><td>Ignatius</td><td>Daniels</td><td>724-5977 Arcu Rd.</td><td>fames.ac@pede.com</td></tr><tr class="a"><td>91</td><td>Cadman</td><td>Peck</td><td>550-1348 Arcu. St.</td><td>Aliquam@nuncsed.ca</td></tr><tr class="b"><td>92</td><td>Ivan</td><td>Wilder</td><td>P.O. Box 145, 111 Accumsan Rd.</td><td>magna@massarutrum.co.uk</td></tr><tr class="a"><td>93</td><td>Jolie</td><td>Jacobson</td><td>9487 A, Road</td><td>non.sollicitudin@Pellentesqueut.edu</td></tr><tr class="b"><td>94</td><td>Michael</td><td>Forbes</td><td>8488 Neque St.</td><td>odio.Aliquam@rutrumloremac.net</td></tr><tr class="a"><td>95</td><td>Erin</td><td>Bullock</td><td>Ap #345-6440 Tristique Street</td><td>Nunc.sollicitudin@tempusscelerisquelorem.edu</td></tr><tr class="b"><td>96</td><td>Vladimir</td><td>Morton</td><td>2665 Orci Rd.</td><td>consequat.enim.diam@consequatnecmollis.co.uk</td></tr><tr class="a"><td>97</td><td>Iola</td><td>Holloway</td><td>607-3536 Laoreet Rd.</td><td>mattis.Cras.eget@enim.co.uk</td></tr><tr class="b"><td>98</td><td>Amelia</td><td>Savage</td><td>Ap #309-2802 Integer Av.</td><td>ultrices@dictum.org</td></tr><tr class="a"><td>99</td><td>Brendan</td><td>Romero</td><td>7489 Sapien. Avenue</td><td>morbi@Aeneansed.co.uk</td></tr><tr class="b"><td>100</td><td>Ralph</td><td>Charles</td><td>Ap #745-9871 Elit. St.</td><td>tincidunt.vehicula.risus@eratnequenon.edu</td></tr></tbody></table><p><br /><br /> </div></div><div class="section"><h4>Getting started<a name="Getting_started"></a></h4> Feel free to browse/fork the demo apps!</p>
-<ul>
-  <li><a href="${demoAppUrl}">Live taglib demo</a></li>
-  <li><a href="${demoThymeleafAppUrl}">Live Thymeleaf demo</a></li>
-</ul><p><br /> </div><div class="section"><h4>Bug / Enhancement<a name="Bug__Enhancement"></a></h4> For any issues or enhancements, please use the dedicated <a class="externalLink" href="https://github.com/dandelion/issues/issues">Github issues repo</a>. </p><p><br /> </div><div class="section"><h4>Forum<a name="Forum"></a></h4> If you need support or want to discuss any issues you might be having with <b>Dandelion</b> or <b>Dandelion-DataTables</b>, the doors of the <a href="./forum.html">forum</a> are wide open! </p><p><br /> </div><div class="section"><h4>License<a name="License"></a></h4> <b>Dandelion-DataTables</b> is released under the <a class="externalLink" href="http://opensource.org/licenses/BSD-3-Clause">BSD 3-Clause</a> licence, i.e. you can do almost everything you want with it.</p><p><link rel="stylesheet" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables.css" /> <link rel="stylesheet" href="./css/tabletag.css" /> <script src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script> <script src="./js/datatables.fixedheader.min.js"></script> <script src="./js/example.js"></script></p></div></div></div>
+            <div class="section"><h2>About Dandelion : Datatables :: Core<a name="About_Dandelion_:_Datatables_::_Core"></a></h2><a name="About_Dandelion_:_Datatables_::_Core"></a><p>Sonatype helps open source projects to set up Maven repositories on https://oss.sonatype.org/</p></div>
                   </div>
             </div>
           </div>
