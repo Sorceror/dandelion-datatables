@@ -142,7 +142,49 @@
         Migration guide</a>
             </li>
                               <li class="nav-header">Tutorials</li>
-                                                                                                                                                          
+                                                                                                                                                                                                                                                    
+      <li>
+    
+                          <a href="../basics/" title="Basics">
+          <i class="icon-chevron-right"></i>
+        Basics</a>
+                  </li>
+                                                                                      
+      <li>
+    
+                          <a href="../themes/" title="Themes">
+          <i class="icon-chevron-right"></i>
+        Themes</a>
+                  </li>
+                                                                                                                  
+      <li>
+    
+                          <a href="../export/" title="Export">
+          <i class="icon-chevron-down"></i>
+        Export</a>
+                    <ul class="nav nav-list">
+                      
+      <li>
+    
+                          <a href="../export/activateexport.html" title="Exporting data">
+          <i class="none"></i>
+        Exporting data</a>
+            </li>
+                      
+      <li>
+    
+                          <a href="../export/multiple.html" title="Multiple export formats">
+          <i class="none"></i>
+        Multiple export formats</a>
+            </li>
+                      
+      <li class="active">
+    
+            <a href="#"><i class="none"></i>Adapting export links</a>
+          </li>
+              </ul>
+        </li>
+                                                                                                                                            
       <li>
     
                           <a href="../ajax/" title="AJAX">
@@ -206,7 +248,29 @@
                         
         <div id="bodyColumn"  class="span10" >
                                   
-            <div class="section"><div class="section"><h3>AJAX Home<a name="AJAX_Home"></a></h3><p><a href="./ajaxsource.html">AJAX source</a></p><p><a href="/ajaxsource.html">AJAX source</a></p><p><a href="ajaxsource.html">AJAX source</a></p></div></div>
+            <div class="section"><div class="section"><h3>Export :: Links style and position<a name="Export_::_Links_style_and_position"></a></h3><p>By defaut, export links are a bit ugly but you can of course customize them to fit your needs.</p><p><br /></p></div><div class="section"><h3>Link style<a name="Link_style"></a></h3><div class="section"><h4>Using JSP<a name="Using_JSP"></a></h4><p>You can use the <tt>datatables:export</tt> tag to customize the export links. This tag allows you to configure one type of export.</p><p>Using this tag, you can for instance add CSS classes to the links or change the link's label.</p>
+<div class="source"><pre class="prettyprint">&lt;datatables:table id=&quot;myTableId&quot; data=&quot;${persons}&quot; export=&quot;csv,xml&quot;&gt;
+   &lt;datatables:column title=&quot;Id&quot; property=&quot;id&quot; /&gt;
+   &lt;datatables:column title=&quot;FirstName&quot; property=&quot;firstName&quot; /&gt;
+   &lt;datatables:column title=&quot;LastName&quot; property=&quot;lastName&quot; /&gt;
+   &lt;datatables:column title=&quot;City&quot; property=&quot;address.town.name&quot; /&gt;
+   &lt;datatables:column title=&quot;Mail&quot; property=&quot;mail&quot; /&gt;
+   &lt;datatables:export type=&quot;csv&quot; cssClass=&quot;btn btn-success&quot; /&gt;
+   &lt;datatables:export type=&quot;xml&quot; cssClass=&quot;btn btn-info&quot; label=&quot;XML export !&quot; /&gt;
+&lt;/datatables:table&gt;
+</pre></div></div><div class="section"><h4>Using Thymeleaf<a name="Using_Thymeleaf"></a></h4>
+<p class="alert alert-error"><b>:-(</b><br /> Not supported yet</p><p><br /></p></div></div><div class="section"><h3>Link position<a name="Link_position"></a></h3><div class="section"><h4>Using JSP<a name="Using_JSP"></a></h4><p>Depending on your needs, you may want to move links around the table. You can do it using the <tt>exportLinks</tt> table attribute.</p><p>Just set on or more values (comma-separated) among <tt>top_left</tt>, <tt>top_middle</tt>, <tt>top_right</tt>, <tt>bottom_left</tt>, <tt>bottom_middle</tt> and <tt>bottom_right</tt>.</p>
+<div class="source"><pre class="prettyprint">&lt;datatables:table id=&quot;mySecondTableId&quot; data=&quot;${persons}&quot; export=&quot;csv,xml&quot; exportLinks=&quot;top_right,bottom_right&quot;&gt;
+   &lt;datatables:column title=&quot;Id&quot; property=&quot;id&quot; /&gt;
+   &lt;datatables:column title=&quot;FirstName&quot; property=&quot;firstName&quot; /&gt;
+   &lt;datatables:column title=&quot;LastName&quot; property=&quot;lastName&quot; /&gt;
+   &lt;datatables:column title=&quot;City&quot; property=&quot;address.town.name&quot; /&gt;
+   &lt;datatables:column title=&quot;Mail&quot; property=&quot;mail&quot; /&gt;
+   &lt;datatables:export type=&quot;csv&quot; cssClass=&quot;btn btn-info&quot; /&gt;
+   &lt;datatables:export type=&quot;xml&quot; cssClass=&quot;btn btn-info&quot; /&gt;
+&lt;/datatables:table&gt;
+</pre></div></div><div class="section"><h4>Using Thymeleaf<a name="Using_Thymeleaf"></a></h4>
+<p class="alert alert-error"><b>:-(</b><br /> Not supported yet</p></div></div></div>
                   </div>
             </div>
           </div>

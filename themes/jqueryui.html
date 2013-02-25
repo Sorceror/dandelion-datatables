@@ -142,7 +142,42 @@
         Migration guide</a>
             </li>
                               <li class="nav-header">Tutorials</li>
-                                                                                                                                                          
+                                                                                                                                                                                                                                                    
+      <li>
+    
+                          <a href="../basics/" title="Basics">
+          <i class="icon-chevron-right"></i>
+        Basics</a>
+                  </li>
+                                                                                                
+      <li>
+    
+                          <a href="../themes/" title="Themes">
+          <i class="icon-chevron-down"></i>
+        Themes</a>
+                    <ul class="nav nav-list">
+                      
+      <li>
+    
+                          <a href="../themes/bootstrap2.html" title="Bootstrap2">
+          <i class="none"></i>
+        Bootstrap2</a>
+            </li>
+                      
+      <li class="active">
+    
+            <a href="#"><i class="none"></i>jQueryUI</a>
+          </li>
+              </ul>
+        </li>
+                                                                                                        
+      <li>
+    
+                          <a href="../export/" title="Export">
+          <i class="icon-chevron-right"></i>
+        Export</a>
+                  </li>
+                                                                                                                                            
       <li>
     
                           <a href="../ajax/" title="AJAX">
@@ -206,7 +241,45 @@
                         
         <div id="bodyColumn"  class="span10" >
                                   
-            <div class="section"><div class="section"><h3>AJAX Home<a name="AJAX_Home"></a></h3><p><a href="./ajaxsource.html">AJAX source</a></p><p><a href="/ajaxsource.html">AJAX source</a></p><p><a href="ajaxsource.html">AJAX source</a></p></div></div>
+            <div class="section"><div class="section"><h3>Themes :: jQuery UI<a name="Themes_::_jQuery_UI"></a></h3><p>In order to activate the <i>jQueryUI</i> theme, just :</p>
+<ul>
+  <li>set the <tt>theme</tt> / <tt>dt:theme</tt> table attribute to <tt>jqueryui</tt> (JSP/Thymeleaf)</li>
+  <li>set a <tt>themeOption</tt> / <tt>themeOption</tt> (JSP/Thymeleaf) among the 24 supported jQuery UI themes : <tt>blacktie</tt>, <tt>blitzer</tt>, <tt>cupertino</tt>, <tt>darkhive</tt>, <tt>dotluv</tt>, <tt>eggplant</tt>, <tt>excitebike</tt>, <tt>flick</tt>, <tt>hotsneaks</tt>, <tt>humanity</tt>, <tt>lefrog</tt>, <tt>mintchoc</tt>, <tt>overcast</tt>, <tt>peppergrinder</tt>, <tt>redmond</tt>, <tt>smoothness</tt>, <tt>southstreet</tt>, <tt>start</tt>, <tt>sunny</tt>, <tt>swankypurse</tt>, <tt>trontastic</tt>, <tt>uidarkness</tt>, <tt>uilightness</tt>, and <tt>vader</tt>.</li>
+</ul><p>Note that the following assets still need to be loaded in your web page :</p>
+<ul>
+  <li>jQuery of course :-)</li>
+  <li>jQuery-UI (JS)</li>
+  <li>DataTables (JS)</li>
+</ul><p><br /></p><div class="section"><h4>Using JSP<a name="Using_JSP"></a></h4>
+<div class="source"><pre class="prettyprint">&lt;datatables:table id=&quot;myTableId&quot; data=&quot;${persons}&quot; theme=&quot;jqueryui&quot; themeOption=&quot;blacktie&quot;&gt;
+    &lt;datatables:column title=&quot;Id&quot; property=&quot;id&quot; /&gt;
+    &lt;datatables:column title=&quot;FirstName&quot; property=&quot;firstName&quot; /&gt;
+    &lt;datatables:column title=&quot;LastName&quot; property=&quot;lastName&quot; /&gt;
+    &lt;datatables:column title=&quot;City&quot; property=&quot;address.town.name&quot; /&gt;
+    &lt;datatables:column title=&quot;Mail&quot; property=&quot;mail&quot; /&gt;
+&lt;/datatables:table&gt;
+</pre></div><p><br /></p></div><div class="section"><h4>Using Thymeleaf<a name="Using_Thymeleaf"></a></h4>
+<div class="source"><pre class="prettyprint">&lt;table id=&quot;myTable&quot; dt:table=&quot;true&quot; dt:theme=&quot;jquery&quot; themeOption=&quot;blacktie&quot;&gt;
+   &lt;thead&gt;
+      &lt;tr&gt;
+         &lt;th&gt;Id&lt;/th&gt;
+         &lt;th&gt;Firstname&lt;/th&gt;
+         &lt;th&gt;Lastname&lt;/th&gt;
+         &lt;th&gt;Street&lt;/th&gt;
+         &lt;th&gt;Mail&lt;/th&gt;
+      &lt;/tr&gt;
+   &lt;/thead&gt;
+   &lt;tbody&gt;
+      &lt;tr th:each=&quot;person : ${persons}&quot;&gt;
+         &lt;td th:text=&quot;${person.id}&quot;&gt;1&lt;/td&gt;
+         &lt;td th:text=&quot;${person.firstName}&quot;&gt;John&lt;/td&gt;
+         &lt;td th:text=&quot;${person.lastName}&quot;&gt;Doe&lt;/td&gt;
+         &lt;td th:text=&quot;${person.address.town.name}&quot;&gt;Nobody knows !&lt;/td&gt;
+         &lt;td th:text=&quot;${person.mail}&quot;&gt;john@doe.com&lt;/td&gt;
+      &lt;/tr&gt;
+   &lt;/tbody&gt;
+&lt;/table&gt;
+</pre></div></div></div></div>
                   </div>
             </div>
           </div>

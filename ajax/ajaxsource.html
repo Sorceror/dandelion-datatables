@@ -142,7 +142,28 @@
         Migration guide</a>
             </li>
                               <li class="nav-header">Tutorials</li>
-                                                                                                                                                                    
+                                                                                                                                                                                                                                                    
+      <li>
+    
+                          <a href="../basics/" title="Basics">
+          <i class="icon-chevron-right"></i>
+        Basics</a>
+                  </li>
+                                                                                      
+      <li>
+    
+                          <a href="../themes/" title="Themes">
+          <i class="icon-chevron-right"></i>
+        Themes</a>
+                  </li>
+                                                                                                        
+      <li>
+    
+                          <a href="../export/" title="Export">
+          <i class="icon-chevron-right"></i>
+        Export</a>
+                  </li>
+                                                                                                                                                      
       <li>
     
                           <a href="../ajax/" title="AJAX">
@@ -241,7 +262,7 @@
                         
         <div id="bodyColumn"  class="span10" >
                                   
-            <div class="section"><div class="section"><h3>How to use AJAX source<a name="How_to_use_AJAX_source"></a></h3><p>It can be useful to populate the table using an AJAX source, lets say web service returning your entities.</p><p>Since v0.8.2, <b>Dandelion-datatables</b> support AJAX sources. But be aware, even if the data is obtained from the server via an AJAX call, DataTables will process it client-side, as for classic DOM sources. So this may be not suitable for large data sets (as DOM sources).</p>
+            <div class="section"><div class="section"><h3>AJAX :: How to use AJAX source<a name="AJAX_::_How_to_use_AJAX_source"></a></h3><p>It can be useful to populate the table using an AJAX source, lets say web service returning your entities.</p><p>Since v0.8.2, <b>Dandelion-datatables</b> support AJAX sources. But be aware, even if the data is obtained from the server via an AJAX call, DataTables will process it client-side, as for classic DOM sources. So this may be not suitable for large data sets (as DOM sources).</p>
 <p class="alert alert-info"><b>Info !</b> <br /> At the moment, DataTables only consumes JSON format so take care to convert data in this format.</p><p>You can see an example <a class="externalLink" href="https://github.com/Dandelion/dandelion-samples/blob/master/datatables-jsp/src/main/java/com/github/dandelion/datatables/ajax/SpringMvcAjaxController.java#L37-L41">here</a>, that uses server-side a Spring MVC controller, AJAX-enabled thanks to the <tt>@ResponseBody</tt> annotation (<a class="externalLink" href="http://blog.springsource.org/2010/01/25/ajax-simplifications-in-spring-3-0/">available since Spring 3.0</a>).</p><p>Since Spring performs the JSON serialization using the default Jackson JSON processor, make sure to have the <a class="externalLink" href="http://mvnrepository.com/artifact/org.codehaus.jackson/jackson-mapper-asl">Jackson JARs</a> in your classpath.</p><p><br /> </p><div class="section"><h4>Using JSP<a name="Using_JSP"></a></h4><p>Using JSP, be aware to fill in the <tt>url</tt> table attribute with your AJAX source URL. Moreover:</p>
 <ul>
   <li>If the value you pass in begins with a leading slash (/), the full request context will be prepended</li>

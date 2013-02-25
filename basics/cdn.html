@@ -142,7 +142,98 @@
         Migration guide</a>
             </li>
                               <li class="nav-header">Tutorials</li>
-                                                                                                                                                          
+                                                                                                                                                                                                                                                              
+      <li>
+    
+                          <a href="../basics/" title="Basics">
+          <i class="icon-chevron-down"></i>
+        Basics</a>
+                    <ul class="nav nav-list">
+                      
+      <li>
+    
+                          <a href="../basics/featurenablement.html" title="Feature enablement">
+          <i class="none"></i>
+        Feature enablement</a>
+            </li>
+                      
+      <li>
+    
+                          <a href="../basics/sorting.html" title="Sorting data">
+          <i class="none"></i>
+        Sorting data</a>
+            </li>
+                      
+      <li>
+    
+                          <a href="../basics/filtering.html" title="Filtering data">
+          <i class="none"></i>
+        Filtering data</a>
+            </li>
+                      
+      <li>
+    
+                          <a href="../basics/defaultvalues.html" title="Handling null/default values">
+          <i class="none"></i>
+        Handling null/default values</a>
+            </li>
+                      
+      <li class="active">
+    
+            <a href="#"><i class="none"></i>Using CDN</a>
+          </li>
+                      
+      <li>
+    
+                          <a href="../basics/changingappearing.html" title="Changing table's appearing">
+          <i class="none"></i>
+        Changing table's appearing</a>
+            </li>
+                      
+      <li>
+    
+                          <a href="../basics/multiple.html" title="Multiple tables">
+          <i class="none"></i>
+        Multiple tables</a>
+            </li>
+                      
+      <li>
+    
+                          <a href="../basics/implicit.html" title="Using implicit object">
+          <i class="none"></i>
+        Using implicit object</a>
+            </li>
+                      
+      <li>
+    
+                          <a href="../basics/customcontent.html" title="Specific column's content">
+          <i class="none"></i>
+        Specific column's content</a>
+            </li>
+                      
+      <li>
+    
+                          <a href="../basics/customhead.html" title="Specific column's head">
+          <i class="none"></i>
+        Specific column's head</a>
+            </li>
+              </ul>
+        </li>
+                                                                                      
+      <li>
+    
+                          <a href="../themes/" title="Themes">
+          <i class="icon-chevron-right"></i>
+        Themes</a>
+                  </li>
+                                                                                                        
+      <li>
+    
+                          <a href="../export/" title="Export">
+          <i class="icon-chevron-right"></i>
+        Export</a>
+                  </li>
+                                                                                                                                            
       <li>
     
                           <a href="../ajax/" title="AJAX">
@@ -206,7 +297,36 @@
                         
         <div id="bodyColumn"  class="span10" >
                                   
-            <div class="section"><div class="section"><h3>AJAX Home<a name="AJAX_Home"></a></h3><p><a href="./ajaxsource.html">AJAX source</a></p><p><a href="/ajaxsource.html">AJAX source</a></p><p><a href="ajaxsource.html">AJAX source</a></p></div></div>
+            <div class="section"><div class="section"><h3>Basics :: Using CDN<a name="Basics_::_Using_CDN"></a></h3><p>You can choose to load the required Datatables web assets (JS, CSS, images) using the Microsoft's CDN.</p><p><tt>link</tt> and <tt>script</tt> HTML tags will be generated and will wrap the table.</p><p>Just set the <tt>cdn</tt> / <tt>dt:cdn</tt> table attributes to <tt>true</tt> (JSP/Thymeleaf).</p><p><br /></p><div class="section"><h4>Using JSP<a name="Using_JSP"></a></h4>
+<div class="source"><pre class="prettyprint">&lt;datatables:table id=&quot;myTableId&quot; data=&quot;${persons}&quot; cdn=&quot;true&quot;&gt;
+   &lt;datatables:column title=&quot;Id&quot; property=&quot;id&quot; /&gt;
+   &lt;datatables:column title=&quot;FirstName&quot; property=&quot;firstName&quot; /&gt;
+   &lt;datatables:column title=&quot;LastName&quot; property=&quot;lastName&quot; /&gt;
+   &lt;datatables:column title=&quot;City&quot; property=&quot;address.town.name&quot; /&gt;
+   &lt;datatables:column title=&quot;Mail&quot; property=&quot;mail&quot; /&gt;
+&lt;/datatables:table&gt;
+</pre></div></div><div class="section"><h4>Using Thymeleaf<a name="Using_Thymeleaf"></a></h4>
+<div class="source"><pre class="prettyprint">&lt;table id=&quot;myTable&quot; dt:table=&quot;true&quot; dt:cdn=&quot;true&quot;&gt;
+   &lt;thead&gt;
+      &lt;tr&gt;
+         &lt;th&gt;Id&lt;/th&gt;
+         &lt;th&gt;Firstname&lt;/th&gt;
+         &lt;th&gt;Lastname&lt;/th&gt;
+         &lt;th&gt;City&lt;/th&gt;
+         &lt;th&gt;Mail&lt;/th&gt;
+      &lt;/tr&gt;
+   &lt;/thead&gt;
+   &lt;tbody&gt;
+      &lt;tr th:each=&quot;person : ${persons}&quot;&gt;
+         &lt;td th:text=&quot;${person.id}&quot;&gt;1&lt;/td&gt;
+         &lt;td th:text=&quot;${person.firstName}&quot;&gt;John&lt;/td&gt;
+         &lt;td th:text=&quot;${person.lastName}&quot;&gt;Doe&lt;/td&gt;
+         &lt;td th:text=&quot;${person.address.town.name}&quot;&gt;Nobody knows !&lt;/td&gt;
+         &lt;td th:text=&quot;${person.mail}&quot;&gt;john@doe.com&lt;/td&gt;
+      &lt;/tr&gt;
+   &lt;/tbody&gt;
+&lt;/table&gt;
+</pre></div></div></div></div>
                   </div>
             </div>
           </div>

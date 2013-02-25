@@ -142,7 +142,28 @@
         Migration guide</a>
             </li>
                               <li class="nav-header">Tutorials</li>
-                                                                                                                                                                    
+                                                                                                                                                                                                                                                    
+      <li>
+    
+                          <a href="../basics/" title="Basics">
+          <i class="icon-chevron-right"></i>
+        Basics</a>
+                  </li>
+                                                                                      
+      <li>
+    
+                          <a href="../themes/" title="Themes">
+          <i class="icon-chevron-right"></i>
+        Themes</a>
+                  </li>
+                                                                                                        
+      <li>
+    
+                          <a href="../export/" title="Export">
+          <i class="icon-chevron-right"></i>
+        Export</a>
+                  </li>
+                                                                                                                                                      
       <li>
     
                           <a href="../ajax/" title="AJAX">
@@ -241,7 +262,7 @@
                         
         <div id="bodyColumn"  class="span10" >
                                   
-            <div class="section"><div class="section"><h3>Server-side processing<a name="Server-side_processing"></a></h3><div class="section"><h4>Introduction<a name="Introduction"></a></h4><p>If you are working with seriously large databases, you might want to consider using the server-side options that DataTables provides. </p><p>Most of the DataTables features (paging, sorting, filtering, ) can be handed off to a server. For this purpose, DataTables provides <a class="externalLink" href="http://datatables.net/usage/server-side">some parameters</a> (sent via an XHR request) that can be processed in order to return just the data that are needed to display the table.</p><p>Since <a class="externalLink" href="https://github.com/datatables4j/issues/issues?milestone=3&amp;page=1&amp;state=closed">v0.8.2</a>, <i>Dandelion-datatables</i> supports server-side processing by providing some utility classes that should help you to set this up.</p><p><br /></p></div><div class="section"><h4>What is server-side processing using Dandelion-datatables ?<a name="What_is_server-side_processing_using_Dandelion-datatables_"></a></h4><p>Actually, the following steps are performed :</p>
+            <div class="section"><div class="section"><h3>AJAX :: Server-side processing<a name="AJAX_::_Server-side_processing"></a></h3><div class="section"><h4>Introduction<a name="Introduction"></a></h4><p>If you are working with seriously large databases, you might want to consider using the server-side options that DataTables provides. </p><p>Most of the DataTables features (paging, sorting, filtering, ) can be handed off to a server. For this purpose, DataTables provides <a class="externalLink" href="http://datatables.net/usage/server-side">some parameters</a> (sent via an XHR request) that can be processed in order to return just the data that are needed to display the table.</p><p>Since <a class="externalLink" href="https://github.com/datatables4j/issues/issues?milestone=3&amp;page=1&amp;state=closed">v0.8.2</a>, <i>Dandelion-datatables</i> supports server-side processing by providing some utility classes that should help you to set this up.</p><p><br /></p></div><div class="section"><h4>What is server-side processing using Dandelion-datatables ?<a name="What_is_server-side_processing_using_Dandelion-datatables_"></a></h4><p>Actually, the following steps are performed :</p>
 <ul>
   <li>On table loading (or on every action performed on it), an XHR request is sent to the server with the DataTables parameters</li>
   <li>The controller intercepts the request, maps its parameters into a <tt>DatatablesCriterias</tt> bean using the utility <tt>DatatablesCriterias.getFromRequest(HttpServletRequest request)</tt> method</li>

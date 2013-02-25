@@ -142,7 +142,28 @@
         Migration guide</a>
             </li>
                               <li class="nav-header">Tutorials</li>
-                                                                                                                                                                    
+                                                                                                                                                                                                                                                    
+      <li>
+    
+                          <a href="../basics/" title="Basics">
+          <i class="icon-chevron-right"></i>
+        Basics</a>
+                  </li>
+                                                                                      
+      <li>
+    
+                          <a href="../themes/" title="Themes">
+          <i class="icon-chevron-right"></i>
+        Themes</a>
+                  </li>
+                                                                                                        
+      <li>
+    
+                          <a href="../export/" title="Export">
+          <i class="icon-chevron-right"></i>
+        Export</a>
+                  </li>
+                                                                                                                                                      
       <li>
     
                           <a href="../ajax/" title="AJAX">
@@ -241,7 +262,7 @@
                         
         <div id="bodyColumn"  class="span10" >
                                   
-            <div class="section"><div class="section"><h3>Pipelining data<a name="Pipelining_data"></a></h3><div class="section"><h4>Introduction<a name="Introduction"></a></h4><p>When using server-side processing with DataTables, it can be quite intensive on your server having an Ajax call every time the user performs some kind of interaction - you can effectively DDOS your server with your own application!</p><p>You might over-come this by modifying the request set to the server to retrieve more information than is actually required for a single pages display. This means that the user can page multiple times (5 times the display size is the default) before a request must be made of the server. Paging is typically the most common interaction performed with a DataTable, so this can be most beneficial to your servers resource usage. Of course the pipeline must be cleared for interactions other than paging (sorting, filtering etc), but thats the trade off that can be made (sending extra information is cheap - while another XHR is expensive).</p><p><br /></p></div><div class="section"><h4>Using JSP<a name="Using_JSP"></a></h4><p>Just set the <tt>pipelining</tt> table attribute to <tt>true</tt>. You can also set the pipe size using the <tt>pipeSize</tt> attribute (which is defaults set to 5).</p>
+            <div class="section"><div class="section"><h3>AJAX :: Pipelining data<a name="AJAX_::_Pipelining_data"></a></h3><div class="section"><h4>Introduction<a name="Introduction"></a></h4><p>When using server-side processing with DataTables, it can be quite intensive on your server having an Ajax call every time the user performs some kind of interaction - you can effectively DDOS your server with your own application!</p><p>You might over-come this by modifying the request set to the server to retrieve more information than is actually required for a single pages display. This means that the user can page multiple times (5 times the display size is the default) before a request must be made of the server. Paging is typically the most common interaction performed with a DataTable, so this can be most beneficial to your servers resource usage. Of course the pipeline must be cleared for interactions other than paging (sorting, filtering etc), but thats the trade off that can be made (sending extra information is cheap - while another XHR is expensive).</p><p><br /></p></div><div class="section"><h4>Using JSP<a name="Using_JSP"></a></h4><p>Just set the <tt>pipelining</tt> table attribute to <tt>true</tt>. You can also set the pipe size using the <tt>pipeSize</tt> attribute (which is defaults set to 5).</p>
 <div class="source"><pre class="prettyprint">&lt;datatables:table id=&quot;myTableId&quot; url=&quot;/persons2&quot; serverSide=&quot;true&quot; processing=&quot;true&quot; pipelining=&quot;true&quot; pipeSize=&quot;6&quot;&gt;
    &lt;datatables:column title=&quot;Id&quot; property=&quot;id&quot; /&gt;
    &lt;datatables:column title=&quot;FirstName&quot; property=&quot;firstName&quot; /&gt;

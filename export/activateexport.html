@@ -142,7 +142,49 @@
         Migration guide</a>
             </li>
                               <li class="nav-header">Tutorials</li>
-                                                                                                                                                          
+                                                                                                                                                                                                                                                    
+      <li>
+    
+                          <a href="../basics/" title="Basics">
+          <i class="icon-chevron-right"></i>
+        Basics</a>
+                  </li>
+                                                                                      
+      <li>
+    
+                          <a href="../themes/" title="Themes">
+          <i class="icon-chevron-right"></i>
+        Themes</a>
+                  </li>
+                                                                                                                  
+      <li>
+    
+                          <a href="../export/" title="Export">
+          <i class="icon-chevron-down"></i>
+        Export</a>
+                    <ul class="nav nav-list">
+                      
+      <li class="active">
+    
+            <a href="#"><i class="none"></i>Exporting data</a>
+          </li>
+                      
+      <li>
+    
+                          <a href="../export/multiple.html" title="Multiple export formats">
+          <i class="none"></i>
+        Multiple export formats</a>
+            </li>
+                      
+      <li>
+    
+                          <a href="../export/customlink.html" title="Adapting export links">
+          <i class="none"></i>
+        Adapting export links</a>
+            </li>
+              </ul>
+        </li>
+                                                                                                                                            
       <li>
     
                           <a href="../ajax/" title="AJAX">
@@ -206,7 +248,38 @@
                         
         <div id="bodyColumn"  class="span10" >
                                   
-            <div class="section"><div class="section"><h3>AJAX Home<a name="AJAX_Home"></a></h3><p><a href="./ajaxsource.html">AJAX source</a></p><p><a href="/ajaxsource.html">AJAX source</a></p><p><a href="ajaxsource.html">AJAX source</a></p></div></div>
+            <div class="section"><div class="section"><h3>Export :: Exporting data<a name="Export_::_Exporting_data"></a></h3><p><b>Dandelion-Datatables</b> allows you to export your tables in multiple formats.</p><p>All plain text exports (as CSV or XML) don't require any additional dependency whereas binary ones do (as PDF or XLS). In this latter case, make sure the right dependency is present in the classpath.</p><p><br /></p><div class="section"><h4>Using JSP<a name="Using_JSP"></a></h4><p>To activate the export, just set the <tt>export</tt> table attribute to <tt>csv</tt> or whatever format your need among proposed ones.</p>
+<div class="source"><pre class="prettyprint">&lt;datatables:table id=&quot;myTableId&quot; data=&quot;${persons}&quot; row=&quot;person&quot; export=&quot;csv&quot;&gt;
+   &lt;datatables:column title=&quot;Id&quot; property=&quot;id&quot; /&gt;
+   &lt;datatables:column title=&quot;FirstName&quot; property=&quot;firstName&quot; /&gt;
+   &lt;datatables:column title=&quot;LastName&quot; property=&quot;lastName&quot; /&gt;
+   &lt;datatables:column title=&quot;City&quot; property=&quot;address.town.name&quot; /&gt;
+   &lt;datatables:column title=&quot;Mail&quot;&gt;
+      &lt;a href=&quot;mailto:${person.mail}&quot;&gt;${person.mail}&lt;/a&gt;
+   &lt;/datatables:column&gt;
+&lt;/datatables:table&gt;
+</pre></div><p><br /></p></div><div class="section"><h4>Using Thymeleaf<a name="Using_Thymeleaf"></a></h4><p>With Thymeleaf, set the <tt>dt:export</tt> table attribute.</p>
+<div class="source"><pre class="prettyprint">&lt;table id=&quot;myTable&quot; dt:table=&quot;true&quot; dt:export=&quot;csv&quot;&gt;
+   &lt;thead&gt;
+      &lt;tr&gt;
+         &lt;th&gt;Id&lt;/th&gt;
+         &lt;th&gt;Firstname&lt;/th&gt;
+         &lt;th&gt;Lastname&lt;/th&gt;
+         &lt;th&gt;City&lt;/th&gt;
+         &lt;th&gt;Mail&lt;/th&gt;
+      &lt;/tr&gt;
+   &lt;/thead&gt;
+   &lt;tbody&gt;
+      &lt;tr th:each=&quot;person : ${persons}&quot;&gt;
+         &lt;td th:text=&quot;${person.id}&quot;&gt;1&lt;/td&gt;
+         &lt;td th:text=&quot;${person.firstName}&quot;&gt;John&lt;/td&gt;
+         &lt;td th:text=&quot;${person.lastName}&quot;&gt;Doe&lt;/td&gt;
+         &lt;td th:text=&quot;${person.address.town.name}&quot;&gt;Nobody knows !&lt;/td&gt;
+         &lt;td&gt;&lt;a th:href=&quot;${'mailto:' + person.mail}&quot; th:text=&quot;${person.mail}&quot;&gt;john@doe.com&lt;/a&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+   &lt;/tbody&gt;
+&lt;/table&gt;
+</pre></div></div></div></div>
                   </div>
             </div>
           </div>
