@@ -149,6 +149,55 @@
           <i class="icon-chevron-right"></i>
         Basics</a>
                   </li>
+                                                                                                                                                                        
+      <li>
+    
+                          <a href="../advanced/" title="Advanced">
+          <i class="icon-chevron-down"></i>
+        Advanced</a>
+                    <ul class="nav nav-list">
+                      
+      <li class="active">
+    
+            <a href="#"><i class="none"></i>Custom row id</a>
+          </li>
+                      
+      <li>
+    
+                          <a href="../advanced/i18n.html" title="i18n">
+          <i class="none"></i>
+        i18n</a>
+            </li>
+                      
+      <li>
+    
+                          <a href="../advanced/extrafile.html" title="Using extra file">
+          <i class="none"></i>
+        Using extra file</a>
+            </li>
+                      
+      <li>
+    
+                          <a href="../advanced/extraconf.html" title="Using extra conf">
+          <i class="none"></i>
+        Using extra conf</a>
+            </li>
+                      
+      <li>
+    
+                          <a href="../advanced/overrideconf.html" title="Overriding default configuration">
+          <i class="none"></i>
+        Overriding default configuration</a>
+            </li>
+                      
+      <li>
+    
+                          <a href="../advanced/compression.html" title="Using compression">
+          <i class="none"></i>
+        Using compression</a>
+            </li>
+              </ul>
+        </li>
                                                                                       
       <li>
     
@@ -169,6 +218,13 @@
                           <a href="../ajax/" title="AJAX">
           <i class="icon-chevron-right"></i>
         AJAX</a>
+                  </li>
+                                                                                                        
+      <li>
+    
+                          <a href="../plugins/" title="Plugins">
+          <i class="icon-chevron-right"></i>
+        Plugins</a>
                   </li>
                               <li class="nav-header">Reference</li>
                                                                                                                                                                                               
@@ -227,7 +283,42 @@
                         
         <div id="bodyColumn"  class="span10" >
                                   
-            <div class="section"><div class="section"><h3>AJAX Home<a name="AJAX_Home"></a></h3><p><a href="./ajaxsource.html">AJAX source</a></p><p><a href="/ajaxsource.html">AJAX source</a></p><p><a href="ajaxsource.html">AJAX source</a></p></div></div>
+            <div class="section"><div class="section"><h3>Advanced :: Row id<a name="Advanced_::_Row_id"></a></h3><p>Sometimes, it can be useful to add an HTML id to each row (tr tags). Sometimes too, the row id cannot just be an incremented id but a dynamic builded string, for instance, from a bean's attribute.</p><p><br /></p><div class="section"><h4>Using JSP<a name="Using_JSP"></a></h4><p>You have at ones disposal 3 table attributes : <tt>rowIdBase</tt>, <tt>rowIdPrefix</tt> and <tt>rowIdSuffix</tt>.</p>
+<ul>
+  <li><tt>rowIdBase</tt> : String <b>evaluated</b> as a property of the current iterated bean</li>
+  <li><tt>rowIdPrefix</tt> : String prepended to the <tt>rowIdBase</tt> attribute</li>
+  <li><tt>rowIdSufix</tt> : String appended to the <tt>rowIdBase</tt> attribute</li>
+</ul>
+<p class="alert alert-warn"><b>Warning!</b><br /> Currently, the row id feature can only be used with DOM sources (not AJAX).</p><p>In the following example, Dandelion-Datatables will build rows (tr tags) with the ids : person_1, person_2, ...</p>
+<div class="source"><pre class="prettyprint">&lt;datatables:table id=&quot;myTableId&quot; data=&quot;${persons}&quot; rowIdBase=&quot;id&quot; rowIdPrefix=&quot;person_&quot;&gt;
+   &lt;datatables:column title=&quot;Id&quot; property=&quot;id&quot; /&gt;
+   &lt;datatables:column title=&quot;FirstName&quot; property=&quot;firstName&quot; /&gt;
+   &lt;datatables:column title=&quot;LastName&quot; property=&quot;lastName&quot; /&gt;
+   &lt;datatables:column title=&quot;City&quot; property=&quot;address.town.name&quot; /&gt;
+   &lt;datatables:column title=&quot;Mail&quot; property=&quot;mail&quot; /&gt;
+&lt;/datatables:table&gt;
+</pre></div><p><br /></p></div><div class="section"><h4>Using Thymeleaf<a name="Using_Thymeleaf"></a></h4><p>Nothing's specific to <b>Dandelion-Datatables</b> is needed, just the native Thymeleaf <tt>th:attr</tt> attribute!</p>
+<div class="source"><pre class="prettyprint">&lt;table id=&quot;myTableId&quot; dt:table=&quot;true&quot;&gt;
+   &lt;thead&gt;
+      &lt;tr&gt;
+         &lt;th&gt;Id&lt;/th&gt;
+         &lt;th&gt;Firstname&lt;/th&gt;
+         &lt;th&gt;Lastname&lt;/th&gt;
+         &lt;th&gt;City&lt;/th&gt;
+         &lt;th&gt;Mail&lt;/th&gt;
+      &lt;/tr&gt;
+   &lt;/thead&gt;
+   &lt;tbody&gt;
+      &lt;tr th:each=&quot;person : ${persons}&quot; th:attr=&quot;id=${'person_' + person.id}&quot;&gt;
+         &lt;td th:text=&quot;${person.id}&quot;&gt;1&lt;/td&gt;
+         &lt;td th:text=&quot;${person.firstName}&quot;&gt;John&lt;/td&gt;
+         &lt;td th:text=&quot;${person.lastName}&quot;&gt;Doe&lt;/td&gt;
+         &lt;td th:text=&quot;${person.address.town.name}&quot;&gt;Nobody knows !&lt;/td&gt;
+         &lt;td th:text=&quot;${person.mail}&quot;&gt;john@doe.com&lt;/td&gt;
+      &lt;/tr&gt;
+   &lt;/tbody&gt;
+&lt;/table&gt;
+</pre></div></div></div></div>
                   </div>
             </div>
           </div>

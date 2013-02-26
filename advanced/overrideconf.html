@@ -149,6 +149,55 @@
           <i class="icon-chevron-right"></i>
         Basics</a>
                   </li>
+                                                                                                                                                                        
+      <li>
+    
+                          <a href="../advanced/" title="Advanced">
+          <i class="icon-chevron-down"></i>
+        Advanced</a>
+                    <ul class="nav nav-list">
+                      
+      <li>
+    
+                          <a href="../advanced/rowid.html" title="Custom row id">
+          <i class="none"></i>
+        Custom row id</a>
+            </li>
+                      
+      <li>
+    
+                          <a href="../advanced/i18n.html" title="i18n">
+          <i class="none"></i>
+        i18n</a>
+            </li>
+                      
+      <li>
+    
+                          <a href="../advanced/extrafile.html" title="Using extra file">
+          <i class="none"></i>
+        Using extra file</a>
+            </li>
+                      
+      <li>
+    
+                          <a href="../advanced/extraconf.html" title="Using extra conf">
+          <i class="none"></i>
+        Using extra conf</a>
+            </li>
+                      
+      <li class="active">
+    
+            <a href="#"><i class="none"></i>Overriding default configuration</a>
+          </li>
+                      
+      <li>
+    
+                          <a href="../advanced/compression.html" title="Using compression">
+          <i class="none"></i>
+        Using compression</a>
+            </li>
+              </ul>
+        </li>
                                                                                       
       <li>
     
@@ -169,6 +218,13 @@
                           <a href="../ajax/" title="AJAX">
           <i class="icon-chevron-right"></i>
         AJAX</a>
+                  </li>
+                                                                                                        
+      <li>
+    
+                          <a href="../plugins/" title="Plugins">
+          <i class="icon-chevron-right"></i>
+        Plugins</a>
                   </li>
                               <li class="nav-header">Reference</li>
                                                                                                                                                                                               
@@ -227,7 +283,21 @@
                         
         <div id="bodyColumn"  class="span10" >
                                   
-            <div class="section"><div class="section"><h3>AJAX Home<a name="AJAX_Home"></a></h3><p><a href="./ajaxsource.html">AJAX source</a></p><p><a href="/ajaxsource.html">AJAX source</a></p><p><a href="ajaxsource.html">AJAX source</a></p></div></div>
+            <div class="section"><div class="section"><h3>Advanced :: Overriding default configuration<a name="Advanced_::_Overriding_default_configuration"></a></h3><p>By default, <b>Dandelion-Datatables</b> internally uses a properties file containing all needed configuration. But there are two ways to override it.</p>
+<ul>
+  <li>First, you can add a file called <b>datatables.properties</b> in your classpath, allowing you to redefine every property you need. Your custom global configuration will then be merged with the <a href="./../properties.html">default one</a>.</li>
+  <li>Or you can locally override properties using the <tt>datatables:prop</tt> tag. Just define the property's name and value.</li>
+</ul><p>For instance, the compression feature is disabled by default. Thanks to the <tt>datatables:prop</tt> tag, you can enable it locally, just for the current table.</p><div class="section"><h4>Using JSP<a name="Using_JSP"></a></h4>
+<div class="source"><pre class="prettyprint">&lt;datatables:table id=&quot;myTableId&quot; data=&quot;${persons}&quot;&gt;
+   &lt;datatables:column title=&quot;Id&quot; property=&quot;id&quot; /&gt;
+   &lt;datatables:column title=&quot;FirstName&quot; property=&quot;firstName&quot; /&gt;
+   &lt;datatables:column title=&quot;LastName&quot; property=&quot;lastName&quot; /&gt;
+   &lt;datatables:column title=&quot;City&quot; property=&quot;address.town.name&quot; /&gt;
+   &lt;datatables:column title=&quot;Mail&quot; property=&quot;mail&quot; /&gt;
+   &lt;datatables:prop name=&quot;compressor.enable&quot; value=&quot;true&quot; /&gt;
+&lt;/datatables:table&gt;
+</pre></div><div class="section"><h5>Using Thymeleaf<a name="Using_Thymeleaf"></a></h5>
+<p class="alert alert-error"><b>:-(</b><br /> Not supported yet</p></div></div></div></div>
                   </div>
             </div>
           </div>

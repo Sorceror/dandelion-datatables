@@ -149,6 +149,55 @@
           <i class="icon-chevron-right"></i>
         Basics</a>
                   </li>
+                                                                                                                                                                        
+      <li>
+    
+                          <a href="../advanced/" title="Advanced">
+          <i class="icon-chevron-down"></i>
+        Advanced</a>
+                    <ul class="nav nav-list">
+                      
+      <li>
+    
+                          <a href="../advanced/rowid.html" title="Custom row id">
+          <i class="none"></i>
+        Custom row id</a>
+            </li>
+                      
+      <li class="active">
+    
+            <a href="#"><i class="none"></i>i18n</a>
+          </li>
+                      
+      <li>
+    
+                          <a href="../advanced/extrafile.html" title="Using extra file">
+          <i class="none"></i>
+        Using extra file</a>
+            </li>
+                      
+      <li>
+    
+                          <a href="../advanced/extraconf.html" title="Using extra conf">
+          <i class="none"></i>
+        Using extra conf</a>
+            </li>
+                      
+      <li>
+    
+                          <a href="../advanced/overrideconf.html" title="Overriding default configuration">
+          <i class="none"></i>
+        Overriding default configuration</a>
+            </li>
+                      
+      <li>
+    
+                          <a href="../advanced/compression.html" title="Using compression">
+          <i class="none"></i>
+        Using compression</a>
+            </li>
+              </ul>
+        </li>
                                                                                       
       <li>
     
@@ -169,6 +218,13 @@
                           <a href="../ajax/" title="AJAX">
           <i class="icon-chevron-right"></i>
         AJAX</a>
+                  </li>
+                                                                                                        
+      <li>
+    
+                          <a href="../plugins/" title="Plugins">
+          <i class="icon-chevron-right"></i>
+        Plugins</a>
                   </li>
                               <li class="nav-header">Reference</li>
                                                                                                                                                                                               
@@ -227,7 +283,39 @@
                         
         <div id="bodyColumn"  class="span10" >
                                   
-            <div class="section"><div class="section"><h3>AJAX Home<a name="AJAX_Home"></a></h3><p><a href="./ajaxsource.html">AJAX source</a></p><p><a href="/ajaxsource.html">AJAX source</a></p><p><a href="ajaxsource.html">AJAX source</a></p></div></div>
+            <div class="section"><div class="section"><h3>Advanced :: Internationalisation<a name="Advanced_::_Internationalisation"></a></h3><p>Every label can be customized thanks to the <tt>labels</tt> attribute of the table tag (only JSP at the moment).</p><p>The value you set relates to the <a class="externalLink" href="http://datatables.net/plug-ins/i18n">sUrl</a> DataTables parameter, which holds the URL of a txt (or js or whatever) file containing all the translated strings and which will be AJAX loaded by DataTables.</p><p>Ensure that the file contains JSON format :</p>
+<div class="source"><pre class="prettyprint">{
+    &quot;sProcessing&quot;:     &quot;Traitement en cours...&quot;,
+    &quot;sSearch&quot;:         &quot;Rechercher :&quot;,
+    &quot;sLengthMenu&quot;:     &quot;Afficher _MENU_ &#xe9;l&#xe9;ments&quot;,
+    &quot;sInfo&quot;:           &quot;Affichage de l'&#xe9;lement _START_ &#xe0; _END_ sur _TOTAL_ &#xe9;l&#xe9;ments&quot;,
+    &quot;sInfoEmpty&quot;:      &quot;Affichage de l'&#xe9;lement 0 &#xe0; 0 sur 0 &#xe9;l&#xe9;ments&quot;,
+    &quot;sInfoFiltered&quot;:   &quot;(filtr&#xe9; de _MAX_ &#xe9;l&#xe9;ments au total)&quot;,
+    &quot;sInfoPostFix&quot;:    &quot;&quot;,
+    &quot;sLoadingRecords&quot;: &quot;Chargement en cours...&quot;,
+    &quot;sZeroRecords&quot;:    &quot;Aucun &#xe9;l&#xe9;ment &#xe0; afficher&quot;,
+    &quot;sEmptyTable&quot;:     &quot;Aucune donn&#xe9;e disponible dans le tableau&quot;,
+    &quot;oPaginate&quot;: {
+        &quot;sFirst&quot;:      &quot;Premier&quot;,
+        &quot;sPrevious&quot;:   &quot;Pr&#xe9;c&#xe9;dent&quot;,
+        &quot;sNext&quot;:       &quot;Suivant&quot;,
+        &quot;sLast&quot;:       &quot;Dernier&quot;
+    },
+    &quot;oAria&quot;: {
+        &quot;sSortAscending&quot;:  &quot;: activer pour trier la colonne par ordre croissant&quot;,
+        &quot;sSortDescending&quot;: &quot;: activer pour trier la colonne par ordre d&#xe9;croissant&quot;
+    }
+}
+</pre></div><p><br /></p><div class="section"><h4>Using JSP<a name="Using_JSP"></a></h4>
+<div class="source"><pre class="prettyprint">&lt;datatables:table id=&quot;myTableId&quot; data=&quot;${persons}&quot; labels=&quot;/js/datatables.labels.fr.txt&quot;&gt;
+   &lt;datatables:column title=&quot;Id&quot; property=&quot;id&quot; /&gt;
+   &lt;datatables:column title=&quot;Firstname&quot; property=&quot;firstName&quot; /&gt;
+   &lt;datatables:column title=&quot;LastName&quot; property=&quot;lastName&quot; /&gt;
+   &lt;datatables:column title=&quot;City&quot; property=&quot;address.town.name&quot; sortable=&quot;false&quot; /&gt;
+   &lt;datatables:column title=&quot;Mail&quot; property=&quot;mail&quot; /&gt;
+&lt;/datatables:table&gt;
+</pre></div><p><br /></p></div><div class="section"><h4>Using Thymeleaf<a name="Using_Thymeleaf"></a></h4>
+<p class="alert alert-error"><b>:-(</b><br /> Not supported yet</p></div></div></div>
                   </div>
             </div>
           </div>

@@ -149,6 +149,55 @@
           <i class="icon-chevron-right"></i>
         Basics</a>
                   </li>
+                                                                                                                                                                        
+      <li>
+    
+                          <a href="../advanced/" title="Advanced">
+          <i class="icon-chevron-down"></i>
+        Advanced</a>
+                    <ul class="nav nav-list">
+                      
+      <li>
+    
+                          <a href="../advanced/rowid.html" title="Custom row id">
+          <i class="none"></i>
+        Custom row id</a>
+            </li>
+                      
+      <li>
+    
+                          <a href="../advanced/i18n.html" title="i18n">
+          <i class="none"></i>
+        i18n</a>
+            </li>
+                      
+      <li>
+    
+                          <a href="../advanced/extrafile.html" title="Using extra file">
+          <i class="none"></i>
+        Using extra file</a>
+            </li>
+                      
+      <li class="active">
+    
+            <a href="#"><i class="none"></i>Using extra conf</a>
+          </li>
+                      
+      <li>
+    
+                          <a href="../advanced/overrideconf.html" title="Overriding default configuration">
+          <i class="none"></i>
+        Overriding default configuration</a>
+            </li>
+                      
+      <li>
+    
+                          <a href="../advanced/compression.html" title="Using compression">
+          <i class="none"></i>
+        Using compression</a>
+            </li>
+              </ul>
+        </li>
                                                                                       
       <li>
     
@@ -169,6 +218,13 @@
                           <a href="../ajax/" title="AJAX">
           <i class="icon-chevron-right"></i>
         AJAX</a>
+                  </li>
+                                                                                                        
+      <li>
+    
+                          <a href="../plugins/" title="Plugins">
+          <i class="icon-chevron-right"></i>
+        Plugins</a>
                   </li>
                               <li class="nav-header">Reference</li>
                                                                                                                                                                                               
@@ -227,7 +283,28 @@
                         
         <div id="bodyColumn"  class="span10" >
                                   
-            <div class="section"><div class="section"><h3>AJAX Home<a name="AJAX_Home"></a></h3><p><a href="./ajaxsource.html">AJAX source</a></p><p><a href="/ajaxsource.html">AJAX source</a></p><p><a href="ajaxsource.html">AJAX source</a></p></div></div>
+            <div class="section"><div class="section"><h3>Advanced :: Using extra conf (only JSP)<a name="Advanced_::_Using_extra_conf_only_JSP"></a></h3><p>As for the <tt>datatables:extraFile</tt> tag, extra configuration allows you to add DataTables configuration which are not supported by the tag attributes, e.g. <a class="externalLink" href="http://datatables.net/release-datatables/examples/advanced_init/column_render.html">custom column rendering</a>.</p><p>This is almost the same principle as for the <tt>datatables:extraFile</tt> but here, the <tt>datatables:extraConf</tt> tag allows you to specify the location of a file containing DataTables extra configuration to merge with the generated one. So this file must contain a javascript JSON-formatted object.</p><p>Internally, <b>Dandelion-Datatables</b> will generate a jQuery AJAX synchronous call to merge the DataTables configuration before initializing the table.</p>
+<p class="alert alert-info"><b>Info!</b><br /> The file can contain non-valid JSON content (e.g. function )</p><div class="section"><h4>Example<a name="Example"></a></h4><p>Considering the following DataTables configuration, stored in <tt>/assets/js/datatables.extraConf.js</tt> :</p>
+<div class="source"><pre class="prettyprint">{
+    &quot;fnRowCallback&quot; : function( nRow, aData, iDisplayIndex, iDisplayIndexFull ) {
+        $('td:eq(0)', nRow).css('color', 'red');
+        $('td:eq(1)', nRow).css('color', 'green');
+        $('td:eq(2)', nRow).css('color', 'gold');
+        $('td:eq(3)', nRow).css('color', 'blue');
+        $('td:eq(4)', nRow).css('color', 'darkorange');
+        return nRow; 
+    }
+}
+</pre></div><p>You just need to declare a <tt>datatables:extraConf</tt> tag as follows :</p>
+<div class="source"><pre class="prettyprint">&lt;datatables:table id=&quot;myTableId&quot; data=&quot;${persons}&quot;&gt;
+   &lt;datatables:column title=&quot;Id&quot; property=&quot;id&quot; /&gt;
+   &lt;datatables:column title=&quot;Firstname&quot; property=&quot;firstName&quot; /&gt;
+   &lt;datatables:column title=&quot;LastName&quot; property=&quot;lastName&quot; /&gt;
+   &lt;datatables:column title=&quot;City&quot; property=&quot;address.town.name&quot; sortable=&quot;false&quot; /&gt;
+   &lt;datatables:column title=&quot;Mail&quot; property=&quot;mail&quot; /&gt;
+   &lt;datatables:extraConf src=&quot;/assets/js/datatables.extraConf.js&quot; /&gt;
+&lt;/datatables:table&gt;
+</pre></div></div></div></div>
                   </div>
             </div>
           </div>
