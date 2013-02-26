@@ -302,7 +302,6 @@
     <tr class="a">
       <th>Name</th>
       <th>Description</th>
-      <th>Type</th>
       <th>Value(s)</th>
       <th>Default</th>
     </tr>
@@ -311,56 +310,48 @@
   <tr class="b">
     <td>type</td>
     <td>(<b>required</b>) Comma-separated list of activated exports.</td>
-    <td>java.lang.String</td>
     <td>csv[,xml|pdf|xls|xlsx]</td>
     <td></td>
   </tr>
   <tr class="a">
     <td>label</td>
     <td>Label of the HTML link</td>
-    <td>java.lang.String</td>
     <td></td>
     <td></td>
   </tr>
   <tr class="b">
     <td>cssStyle</td>
     <td>CSS style applied to the HTML link</td>
-    <td>java.lang.String</td>
     <td></td>
     <td></td>
   </tr>
   <tr class="a">
     <td>cssClass</td>
     <td>CSS class applied to the HTML link</td>
-    <td>java.lang.String</td>
     <td></td>
     <td></td>
   </tr>
   <tr class="b">
     <td>includeHeader</td>
     <td>Indicated whether headers should be added in export or not (only for compatible export : CSV, XLS)</td>
-    <td>java.lang.Boolean</td>
     <td>true|false</td>
     <td>true</td>
   </tr>
   <!-- <tr>
     <td>area</td>
     <td>Indicates how much data should be exported. Choose <tt>list</tt> for the full list or <tt>current</tt> to only export the data that is currently being shown</td>
-    <td>java.lang.String</td>
     <td>list|current</td>
     <td>list</td>
   </tr> -->
   <tr class="a">
     <td>fileName</td>
     <td>Name of the file containing exported data</td>
-    <td>java.lang.String</td>
     <td></td>
     <td>The export type uppercased</td>
   </tr>
   <tr class="b">
     <td>autoSize</td>
     <td>Indicates whether columns should be auto-sized or not (only for compatible export : XLS) (See the <a class="externalLink" href="http://poi.apache.org/spreadsheet/quick-guide.html#Autofit">reference</a>)</td>
-    <td>java.lang.Boolean</td>
     <td>true|false</td>
     <td>false</td>
   </tr>
