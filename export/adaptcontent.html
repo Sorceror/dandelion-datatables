@@ -142,83 +142,13 @@
         Migration guide</a>
             </li>
                               <li class="nav-header">Tutorials</li>
-                                                                                                                                                                                                                                                              
+                                                                                                                                                                                                                                                    
       <li>
     
                           <a href="../basics/" title="Basics">
-          <i class="icon-chevron-down"></i>
+          <i class="icon-chevron-right"></i>
         Basics</a>
-                    <ul class="nav nav-list">
-                      
-      <li>
-    
-                          <a href="../basics/featurenablement.html" title="Feature enablement">
-          <i class="none"></i>
-        Feature enablement</a>
-            </li>
-                      
-      <li>
-    
-                          <a href="../basics/sorting.html" title="Sorting data">
-          <i class="none"></i>
-        Sorting data</a>
-            </li>
-                      
-      <li>
-    
-                          <a href="../basics/filtering.html" title="Filtering data">
-          <i class="none"></i>
-        Filtering data</a>
-            </li>
-                      
-      <li>
-    
-                          <a href="../basics/defaultvalues.html" title="Handling null/default values">
-          <i class="none"></i>
-        Handling null/default values</a>
-            </li>
-                      
-      <li>
-    
-                          <a href="../basics/cdn.html" title="Using CDN">
-          <i class="none"></i>
-        Using CDN</a>
-            </li>
-                      
-      <li class="active">
-    
-            <a href="#"><i class="none"></i>Changing table's appearing</a>
-          </li>
-                      
-      <li>
-    
-                          <a href="../basics/multiple.html" title="Multiple tables">
-          <i class="none"></i>
-        Multiple tables</a>
-            </li>
-                      
-      <li>
-    
-                          <a href="../basics/implicit.html" title="Using implicit object">
-          <i class="none"></i>
-        Using implicit object</a>
-            </li>
-                      
-      <li>
-    
-                          <a href="../basics/customcontent.html" title="Specific column's content">
-          <i class="none"></i>
-        Specific column's content</a>
-            </li>
-                      
-      <li>
-    
-                          <a href="../basics/customhead.html" title="Specific column's head">
-          <i class="none"></i>
-        Specific column's head</a>
-            </li>
-              </ul>
-        </li>
+                  </li>
                                                                                       
       <li>
     
@@ -226,13 +156,55 @@
           <i class="icon-chevron-right"></i>
         Themes</a>
                   </li>
-                                                                                                                                                              
+                                                                                                                                                                        
       <li>
     
                           <a href="../export/" title="Export">
-          <i class="icon-chevron-right"></i>
+          <i class="icon-chevron-down"></i>
         Export</a>
-                  </li>
+                    <ul class="nav nav-list">
+                      
+      <li>
+    
+                          <a href="../export/activateexport.html" title="Exporting data">
+          <i class="none"></i>
+        Exporting data</a>
+            </li>
+                      
+      <li>
+    
+                          <a href="../export/multiple.html" title="Multiple export formats">
+          <i class="none"></i>
+        Multiple export formats</a>
+            </li>
+                      
+      <li>
+    
+                          <a href="../export/customlink.html" title="Adapting export links">
+          <i class="none"></i>
+        Adapting export links</a>
+            </li>
+                      
+      <li>
+    
+                          <a href="../export/exportoptions.html" title="Export options">
+          <i class="none"></i>
+        Export options</a>
+            </li>
+                      
+      <li class="active">
+    
+            <a href="#"><i class="none"></i>Adapt export's content</a>
+          </li>
+                      
+      <li>
+    
+                          <a href="../export/ownclass.html" title="Write your own export classes">
+          <i class="none"></i>
+        Write your own export classes</a>
+            </li>
+              </ul>
+        </li>
                                                                                                                                             
       <li>
     
@@ -297,36 +269,20 @@
                         
         <div id="bodyColumn"  class="span10" >
                                   
-            <div class="section"><div class="section"><h3>Basics :: Changing table's appearing<a name="Basics_::_Changing_tables_appearing"></a></h3><p>By default, the table is displayed during the HTML markup and the server-side Javascript generation, sometimes resulting in a ugly display for some milliseconds, depending on browsers. </p><p>This behaviour can be changed using the <tt>appear</tt> / <tt>dt:appear</tt> table attribute (JSP/Thymeleaf).</p><p>In the following example, a duration of 1500 milliseconds has been set to the fadeIn animation instead of the default 400 milliseconds but you cal also set the <tt>block</tt> value to trigger the jQuery show() function.</p><p><br /></p><div class="section"><h4>Using JSP<a name="Using_JSP"></a></h4>
-<div class="source"><pre class="prettyprint">&lt;datatables:table id=&quot;myTableId&quot; data=&quot;${persons}&quot; appear=&quot;fadein,1500&quot;&gt;
+            <div class="section"><div class="section"><h3>Export :: Adapt export's content<a name="Export_::_Adapt_exports_content"></a></h3><p>It happens that some of your columns contain HTML code that you don't want to be rendered in the export (e.g. an &quot;Action&quot; column with some links). By default, all column are exported but it could be useful to remove some column or just adapt its content only for exports.</p><p>In this regards, <b>Dandelion-Datatables</b> allows you to adapt exports content.</p><p><br /></p><div class="section"><h4>Using JSP<a name="Using_JSP"></a></h4><p>This is done thanks to the <tt>display</tt> column attribute. The authorized values are : <tt>csv</tt>, <tt>xml</tt>, <tt>xls</tt>, <tt>xlsx</tt>and <tt>pdf</tt>, i.e. all authorized export types plus <tt>html</tt>.</p><p>So, for instance, setting the <tt>display</tt> attribute to <tt>html</tt> means that the corresponding column will only appear in your web page (html), not in exports. This way, you can adapt the content of each export. </p><p>In the following example, we don't want HTML code to be displayed in the exported &quot;Mail&quot; column. That's why a second &quot;Mail&quot; column is added with the <tt>display</tt> attribute set to <tt>csv,xls</tt> (i.e. not <tt>html</tt>) and with just the bean's property inside (thanks to the <tt>property</tt> attribute).</p>
+<div class="source"><pre class="prettyprint">&lt;datatables:table id=&quot;myTableId&quot; data=&quot;${persons}&quot; row=&quot;person&quot; export=&quot;csv,xls&quot;&gt;
    &lt;datatables:column title=&quot;Id&quot; property=&quot;id&quot; /&gt;
    &lt;datatables:column title=&quot;FirstName&quot; property=&quot;firstName&quot; /&gt;
    &lt;datatables:column title=&quot;LastName&quot; property=&quot;lastName&quot; /&gt;
-   &lt;datatables:column title=&quot;City&quot; property=&quot;address.town.name&quot; /&gt;
-   &lt;datatables:column title=&quot;Mail&quot; property=&quot;mail&quot; /&gt;
+   &lt;datatables:column title=&quot;City&quot; property=&quot;address.town.name&quot; display=&quot;html&quot; /&gt;
+   &lt;datatables:column title=&quot;Mail&quot; display=&quot;html&quot;&gt;
+      &lt;a href=&quot;mailto:${person.mail}&quot;&gt;${person.mail}&lt;/a&gt;
+   &lt;/datatables:column&gt;
+   &lt;datatables:column title=&quot;Mail&quot; property=&quot;mail&quot; display=&quot;csv,xls&quot; /&gt;
+   &lt;datatables:export type=&quot;xls&quot; includeHeader=&quot;true&quot; fileName=&quot;my-export-name&quot; cssClass=&quot;btn&quot; label=&quot;xls&quot; /&gt;
 &lt;/datatables:table&gt;
-</pre></div></div><div class="section"><h4>Using Thymeleaf<a name="Using_Thymeleaf"></a></h4>
-<div class="source"><pre class="prettyprint">&lt;table id=&quot;myTable&quot; dt:table=&quot;true&quot; dt:appear=&quot;fadein,1500&quot;&gt;
-   &lt;thead&gt;
-      &lt;tr&gt;
-         &lt;th&gt;Id&lt;/th&gt;
-         &lt;th&gt;Firstname&lt;/th&gt;
-         &lt;th&gt;Lastname&lt;/th&gt;
-         &lt;th&gt;City&lt;/th&gt;
-         &lt;th&gt;Mail&lt;/th&gt;
-      &lt;/tr&gt;
-   &lt;/thead&gt;
-   &lt;tbody&gt;
-      &lt;tr th:each=&quot;person : ${persons}&quot;&gt;
-         &lt;td th:text=&quot;${person.id}&quot;&gt;1&lt;/td&gt;
-         &lt;td th:text=&quot;${person.firstName}&quot;&gt;John&lt;/td&gt;
-         &lt;td th:text=&quot;${person.lastName}&quot;&gt;Doe&lt;/td&gt;
-         &lt;td th:text=&quot;${person.address.town.name}&quot;&gt;Nobody knows !&lt;/td&gt;
-         &lt;td th:text=&quot;${person.mail}&quot;&gt;john@doe.com&lt;/td&gt;
-      &lt;/tr&gt;
-   &lt;/tbody&gt;
-&lt;/table&gt;
-</pre></div></div></div></div>
+</pre></div><p><br /></p></div><div class="section"><h4>Using Thymeleaf<a name="Using_Thymeleaf"></a></h4>
+<p class="alert alert-error"><b>:-(</b><br /> Not supported yet</p></div></div></div>
                   </div>
             </div>
           </div>
