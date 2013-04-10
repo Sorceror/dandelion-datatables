@@ -4,11 +4,12 @@
    <parent>
       <groupId>com.github.dandelion</groupId>
       <artifactId>dandelion-datatables</artifactId>
-      <version>0.8.11-CUSTOM</version>
+      <version>0.8.11-SNAPSHOT</version>
    </parent>
 
    <artifactId>datatables-thymeleaf</artifactId>
    <packaging>jar</packaging>
+   <version>0.8.11-CUSTOM</version>
    <name>Dandelion :: Datatables :: Thymeleaf Implementation</name>
 
    <properties>
