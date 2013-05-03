@@ -35,16 +35,13 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.tagext.BodyTagSupport;
-
 import org.apache.commons.beanutils.PropertyUtils;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import com.github.dandelion.datatables.core.constants.ExportConstants;
 import com.github.dandelion.datatables.core.exception.BadConfigurationException;
 import com.github.dandelion.datatables.core.export.ExportConf;
@@ -68,8 +65,7 @@ import com.github.dandelion.datatables.core.html.HtmlTable;
 import com.github.dandelion.datatables.core.plugin.ColReorderPlugin;
 import com.github.dandelion.datatables.core.plugin.FixedHeaderPlugin;
 import com.github.dandelion.datatables.core.plugin.ScrollerPlugin;
-import com.github.dandelion.datatables.core.theme.Bootstrap2Theme;
-import com.github.dandelion.datatables.core.theme.JQueryUITheme;
+import com.github.dandelion.datatables.core.theme.Theme;
 import com.github.dandelion.datatables.core.theme.ThemeOption;
 import com.github.dandelion.datatables.core.util.RequestHelper;
 
@@ -100,6 +96,7 @@ public abstract class AbstractTableTag extends BodyTagSupport {
 	protected String id;
 	protected String cssStyle;
 	protected String cssClass;
+	protected String cssStripes;
 	protected String rowIdBase;
 	protected String rowIdPrefix;
 	protected String rowIdSufix;
@@ -116,7 +113,6 @@ public abstract class AbstractTableTag extends BodyTagSupport {
 	protected String appear;
 	protected String footer;
 	protected String lengthMenu;
-	protected String cssStripes;
 	protected Integer displayLength;
 
 	// Advanced features
@@ -140,7 +136,8 @@ public abstract class AbstractTableTag extends BodyTagSupport {
 	protected String fixedPosition;
 	protected Integer fixedOffsetTop;
 	protected Boolean scroller = false;
-	protected String scrollY = "300px";
+	protected String scrollY;
+	protected Boolean scrollCollapse;
 	protected Boolean colReorder = false;
 
 	// Export
@@ -164,10 +161,10 @@ public abstract class AbstractTableTag extends BodyTagSupport {
 	protected void registerBasicConfiguration() throws BadConfigurationException {
 
 		if (StringUtils.isNotBlank(this.cssClass)) {
-			this.table.setCssClass(new StringBuffer(this.cssClass));
+			this.table.setCssClass(new StringBuilder(this.cssClass));
 		}
 		if (StringUtils.isNotBlank(this.cssStyle)) {
-			this.table.setCssStyle(new StringBuffer(this.cssStyle));
+			this.table.setCssStyle(new StringBuilder(this.cssStyle));
 		}
 		if (this.autoWidth != null) {
 			this.table.setAutoWidth(this.autoWidth);
@@ -273,6 +270,14 @@ public abstract class AbstractTableTag extends BodyTagSupport {
 		if(displayLength != null){
 			table.setDisplayLength(displayLength);
 		}
+		
+		if (StringUtils.isNotBlank(this.scrollY)) {
+			this.table.setScrollY(this.scrollY);
+		}
+		
+		if (this.scrollCollapse != null) {
+			this.table.setScrollCollapse(this.scrollCollapse);
+		}
 	}
 
 	/**
@@ -281,11 +286,9 @@ public abstract class AbstractTableTag extends BodyTagSupport {
 	protected void registerTheme() throws JspException {
 
 		if (StringUtils.isNotBlank(this.theme)) {
-			if (this.theme.trim().toLowerCase().equals("bootstrap2")) {
-				this.table.setTheme(new Bootstrap2Theme());
-			} else if (this.theme.trim().toLowerCase().equals("jqueryui")) {
-				this.table.setTheme(new JQueryUITheme());
-			} else {
+			try {
+				this.table.setTheme(Theme.valueOf(this.theme.trim().toUpperCase()).getInstance());
+			} catch (IllegalArgumentException e) {
 				logger.warn(
 						"Theme {} is not recognized. Only 'bootstrap2 and jQueryUI' exists for now.",
 						this.theme);
@@ -328,10 +331,6 @@ public abstract class AbstractTableTag extends BodyTagSupport {
 		}
 
 		// Plugins configuration
-		if (StringUtils.isNotBlank(this.scrollY)) {
-			this.table.setScrollY(this.scrollY);
-		}
-
 		if (StringUtils.isNotBlank(this.fixedPosition)) {
 			this.table.setFixedPosition(this.fixedPosition);
 		}
@@ -516,8 +515,9 @@ public abstract class AbstractTableTag extends BodyTagSupport {
 
 			if (row != null) {
 				pageContext.setAttribute(row, object);
+				pageContext.setAttribute(row + "_rowIndex", iterationNumber);
 			}
-
+			
 			String rowId = getRowId();
 			if (StringUtils.isNotBlank(rowId)) {
 				this.table.addRow(rowId);
@@ -571,7 +571,7 @@ public abstract class AbstractTableTag extends BodyTagSupport {
 	 */
 	protected String getRowId() throws JspException {
 
-		StringBuffer rowId = new StringBuffer();
+		StringBuilder rowId = new StringBuilder();
 
 		if (StringUtils.isNotBlank(this.rowIdPrefix)) {
 			rowId.append(this.rowIdPrefix);
@@ -808,6 +808,14 @@ public abstract class AbstractTableTag extends BodyTagSupport {
 
 	public void setScrollY(String scrollY) {
 		this.scrollY = scrollY;
+	}
+
+	public Boolean getScrollCollapse() {
+		return scrollCollapse;
+	}
+
+	public void setScrollCollapse(Boolean scrollCollapse) {
+		this.scrollCollapse = scrollCollapse;
 	}
 
 	public String getFixedPosition() {

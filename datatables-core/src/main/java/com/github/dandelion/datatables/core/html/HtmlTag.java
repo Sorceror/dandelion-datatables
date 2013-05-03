@@ -36,27 +36,81 @@ package com.github.dandelion.datatables.core.html;
  */
 public abstract class HtmlTag {
 
+	protected static final char CLASS_SEPARATOR = ' ';
+	protected static final char CSS_SEPARATOR = ';';
+
+	/**
+	 * Tag label.
+	 */
+	protected String tag;
+
 	/**
 	 * Plain old HTML <code>id</code> attribute.
 	 */
 	protected String id;
-	
+
 	/**
 	 * Plain old HTML <code>class</code> attribute.
 	 */
-	protected StringBuffer cssClass;
+	protected StringBuilder cssClass;
 
 	/**
 	 * Plain old HTML <code>style</code> attribute.
 	 */
-	protected StringBuffer cssStyle;
+	protected StringBuilder cssStyle;
 
 	/**
 	 * Render the tag in HTML code.
 	 * 
 	 * @return the HTML code corresponding to the tag.
 	 */
-	public abstract StringBuffer toHtml();
+	public StringBuilder toHtml() {
+		StringBuilder html = new StringBuilder();
+		html.append(getHtmlOpeningTag());
+		html.append(getHtmlClosingTag());
+		return html;
+	}
+
+	protected StringBuilder getHtmlOpeningTag() {
+		StringBuilder html = new StringBuilder();
+		html.append('<');
+		html.append(this.tag);
+		html.append(getHtmlAttributes());
+		html.append('>');
+		return html;
+	}
+
+	protected StringBuilder getHtmlAttributes() {
+		StringBuilder html = new StringBuilder();
+		html.append(writeAttribute("id", this.id));
+		html.append(writeAttribute("class", this.cssClass));
+		html.append(writeAttribute("style", this.cssStyle));
+		return html;
+	}
+	
+	protected static StringBuilder writeAttribute(String name, Object data) {
+		StringBuilder html = new StringBuilder();
+		if(data != null) {
+			html.append(' ');
+			html.append(name);
+			html.append("=\"");
+			html.append(data.toString());
+			html.append('"');
+		}
+		return html;
+	}
+
+	protected StringBuilder getHtmlClosingTag() {
+		StringBuilder html = new StringBuilder();
+		html.append("</");
+		html.append(this.tag);
+		html.append('>');
+		return html;
+	}
+
+	public String getTag() {
+		return tag;
+	}
 
 	public String getId() {
 		return id;
@@ -65,33 +119,37 @@ public abstract class HtmlTag {
 	public void setId(String id) {
 		this.id = id;
 	}
-	
-	public StringBuffer getCssClass() {
+
+	public StringBuilder getCssClass() {
 		return cssClass;
 	}
 
-	public void setCssClass(StringBuffer cssClass) {
+	public void setCssClass(StringBuilder cssClass) {
 		this.cssClass = cssClass;
 	}
 
-	public StringBuffer getCssStyle() {
+	public StringBuilder getCssStyle() {
 		return cssStyle;
 	}
 
-	public void setCssStyle(StringBuffer cssStyle) {
+	public void setCssStyle(StringBuilder cssStyle) {
 		this.cssStyle = cssStyle;
 	}
 
 	public void addCssClass(String cssClass) {
-		if (this.cssClass == null) {
-			this.cssClass = new StringBuffer();
+		if(this.cssClass == null) {
+			this.cssClass = new StringBuilder();
+		} else {
+			this.cssClass.append(CLASS_SEPARATOR);
 		}
 		this.cssClass.append(cssClass);
 	}
 
 	public void addCssStyle(String cssStyle) {
-		if (this.cssStyle == null) {
-			this.cssStyle = new StringBuffer();
+		if(this.cssStyle == null) {
+			this.cssStyle = new StringBuilder();
+		} else {
+			this.cssStyle.append(CSS_SEPARATOR);
 		}
 		this.cssStyle.append(cssStyle);
 	}

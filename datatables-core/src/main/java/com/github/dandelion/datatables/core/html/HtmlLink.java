@@ -43,28 +43,19 @@ public class HtmlLink extends HtmlTag {
 	private String href;
 	
 	public HtmlLink(){
-	}
+		tag = "link";
+ 	}
 	
 	public HtmlLink(String href){
+		tag = "link";
 		this.href = href;
 	}
-	
-	/**
-	 * {@inheritDoc}
-	 */
+
 	@Override
-	public StringBuffer toHtml(){
-		StringBuffer html = new StringBuffer();
-		html.append("<link rel=\"stylesheet\"");
-		
-		if(this.href != null){
-			html.append(" href=\"");
-			html.append(this.href);
-			html.append(" \"");
-		}
-		
-		html.append("/>");
-		
+	protected StringBuilder getHtmlAttributes() {
+		StringBuilder html = super.getHtmlAttributes();
+		html.append(writeAttribute("rel", "stylesheet"));
+		html.append(writeAttribute("href", this.href));
 		return html;
 	}
 	

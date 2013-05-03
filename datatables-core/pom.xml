@@ -4,7 +4,7 @@
    <parent>
       <groupId>com.github.dandelion</groupId>
       <artifactId>dandelion-datatables</artifactId>
-      <version>0.8.11-SNAPSHOT</version>
+      <version>0.8.12-SNAPSHOT</version>
    </parent>
 
    <artifactId>datatables-core</artifactId>
@@ -51,6 +51,14 @@
          <groupId>org.slf4j</groupId>
          <artifactId>slf4j-api</artifactId>
          <scope>compile</scope>
+      </dependency>
+      
+      <!-- Test -->
+      <dependency>
+         <groupId>com.github.dandelion</groupId>
+         <artifactId>datatables-testing</artifactId>
+         <version>${project.version}</version>
+         <scope>test</scope>
       </dependency>
 
    </dependencies>

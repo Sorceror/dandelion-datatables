@@ -35,7 +35,7 @@ import static org.fest.assertions.Assertions.assertThat;
 import org.junit.Test;
 
 import com.github.dandelion.datatables.jsp.tag.DomBaseTest;
-import com.github.dandelion.datatables.utils.Mock;
+import com.github.dandelion.datatables.mock.Mock;
 import com.github.dandelion.datatables.utils.TableBuilder;
 
 /**
@@ -53,12 +53,11 @@ public class DefaultTableTest extends DomBaseTest {
 	
 	@Test
 	public void should_fill_the_table() {
-		System.out.println(table);
 		assertThat(table.getHeadRows()).hasSize(1);
 		assertThat(table.getBodyRows()).hasSize(Mock.persons.size());
 		assertThat(table.getBodyRows().get(0).getColumns()).hasSize(tableBuilder.getColumnTags().size());
-		assertThat(table.getBodyRows().get(0).getColumns().get(0).getContent()).isEqualTo(Mock.persons.get(0).getId().toString());
-		assertThat(table.getBodyRows().get(0).getColumns().get(1).getContent()).isEqualTo(Mock.persons.get(0).getFirstName().toString());
+		assertThat(table.getBodyRows().get(0).getColumns().get(0).getContent().toString()).isEqualTo(Mock.persons.get(0).getId().toString());
+		assertThat(table.getBodyRows().get(0).getColumns().get(1).getContent().toString()).isEqualTo(Mock.persons.get(0).getFirstName().toString());
 	}
 
 	@Test

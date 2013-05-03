@@ -57,8 +57,8 @@ import org.openqa.selenium.remote.service.DriverService;
 import com.github.dandelion.datatables.core.asset.JsResource;
 import com.github.dandelion.datatables.core.asset.WebResources;
 import com.github.dandelion.datatables.core.cache.AssetCache;
-import com.github.dandelion.datatables.utils.Mock;
-import com.github.dandelion.datatables.utils.Person;
+import com.github.dandelion.datatables.mock.Mock;
+import com.github.dandelion.datatables.mock.Person;
 
 
 /**
@@ -177,5 +177,13 @@ public abstract class DomBaseIT extends FluentAdapter {
 		String url = "http://" + SERVER_HOST + ":" + SERVER_PORT + "/" + page + "|myTableId";
 		JsResource jsResource = ((WebResources)AssetCache.cache.get(url)).getMainJsFile();
 		return jsResource;
+	}
+	
+	public void goToAndPrint(String page){
+		goTo(page);
+
+		System.out.println(driver.getPageSource());
+		System.out.println("*****************************************");
+		System.out.println(getConfigurationFromPage(page.replaceFirst("^/", "")).getContent());
 	}
 }

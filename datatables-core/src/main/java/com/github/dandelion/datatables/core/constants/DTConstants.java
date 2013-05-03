@@ -28,7 +28,6 @@
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package com.github.dandelion.datatables.core.constants;
-
 /**
  * DataTables internal constants.
  * 
@@ -49,6 +48,7 @@ public class DTConstants {
 	public static final String DT_S_TYPE = "sType";
 	public static final String DT_A_LENGTH_MENU = "aLengthMenu";
 	public static final String DT_AS_STRIPE_CLASSES = "asStripeClasses";
+	public static final String DT_S_CLASS = "sClass";
 
 	// AJAX related constants
 	public static final String DT_B_DEFER_RENDER = "bDeferRender";
@@ -59,7 +59,7 @@ public class DTConstants {
 	public static final String DT_S_SERVERMETHOD = "sServerMethod";
 	public static final String DT_FN_SERVERPARAMS = "fnServerParams";
 	public static final String DT_S_AJAXDATAPROP = "sAjaxDataProp";
-		 
+
 	// AJAX URL parameters
 	public static final String DT_S_ECHO = "sEcho";
 	public static final String DT_I_COLUMNS = "iColumns";
@@ -87,12 +87,14 @@ public class DTConstants {
 	
 	// Extra features
 	public static final String DT_SCROLLY = "sScrollY";
+	public static final String DT_SCROLLCOLLAPSE = "bScrollCollapse";
 	public static final String DT_OFFSETTOP = "offsetTop";
 	public static final String DT_FILTER_TYPE = "type";
 	
 	// Column configuration
 	public static final String DT_SORTABLE = "bSortable";
 	public static final String DT_SEARCHABLE = "bSearchable";
+	public static final String DT_VISIBLE = "bVisible";
 	public static final String DT_SORT_INIT = "aaSorting";
 	public static final String DT_SORT_DIR = "asSorting";
 	public static final String DT_DATA = "mData";

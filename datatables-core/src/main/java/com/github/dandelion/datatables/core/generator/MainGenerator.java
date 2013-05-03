@@ -30,7 +30,6 @@
 package com.github.dandelion.datatables.core.generator;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -40,6 +39,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.github.dandelion.datatables.core.asset.DisplayType;
+import com.github.dandelion.datatables.core.asset.JavascriptFunction;
 import com.github.dandelion.datatables.core.asset.JavascriptSnippet;
 import com.github.dandelion.datatables.core.callback.Callback;
 import com.github.dandelion.datatables.core.constants.DTConstants;
@@ -51,7 +51,7 @@ import com.github.dandelion.datatables.core.html.HtmlTable;
  *
  * @author Thibault Duchateau
  */
-public class MainGenerator {
+public class MainGenerator extends AbstractConfigurationGenerator {
 
     // Logger
     private static Logger logger = LoggerFactory.getLogger(MainGenerator.class);
@@ -71,12 +71,13 @@ public class MainGenerator {
         // Main configuration object
         Map<String, Object> mainConf = new HashMap<String, Object>();
 
-        // Columns configuration
+        // Columns configuration using aoColumn
         Map<String, Object> tmp = null;
         List<Map<String, Object>> aoColumnsContent = new ArrayList<Map<String, Object>>();
         for (HtmlColumn column : table.getLastHeaderRow().getColumns()) {
         	
-        	if(column.getEnabledDisplayTypes().contains(DisplayType.HTML)){
+			if (column.getEnabledDisplayTypes().contains(DisplayType.ALL)
+					|| column.getEnabledDisplayTypes().contains(DisplayType.HTML)) {
         		tmp = new HashMap<String, Object>();
         		
         		// Sortable
@@ -84,6 +85,12 @@ public class MainGenerator {
         		
         		// Searchable
         		tmp.put(DTConstants.DT_SEARCHABLE, column.getSearchable());
+        		
+        		// Visible
+        		tmp.put(DTConstants.DT_VISIBLE, column.getVisible());
+        		if(column.getVisible() != null && !column.getVisible()){
+        			tmp.put(DTConstants.DT_SEARCHABLE, false);	
+        		}
         		
         		// Column's content
         		if (StringUtils.isNotBlank(column.getProperty())) {
@@ -99,10 +106,8 @@ public class MainGenerator {
         		}
         		
         		// Sorting direction
-        		if (StringUtils.isNotBlank(column.getSortDirection())) {
-        			List<Object> sortDirection = new ArrayList<Object>();
-        			Collections.addAll(sortDirection, column.getSortDirection().trim().toLowerCase().split(","));
-        			tmp.put(DTConstants.DT_SORT_DIR, sortDirection);
+        		if (column.getSortDirections() != null) {
+        			tmp.put(DTConstants.DT_SORT_DIR, column.getSortDirections());
         		}
         		
         		aoColumnsContent.add(tmp);
@@ -174,7 +179,13 @@ public class MainGenerator {
         if(StringUtils.isNotBlank(table.getStripeClasses())){
         	mainConf.put(DTConstants.DT_AS_STRIPE_CLASSES, new JavascriptSnippet(table.getStripeClasses()));
         }
-
+        if(StringUtils.isNotBlank(table.getScrollY())){
+        	mainConf.put(DTConstants.DT_SCROLLY, table.getScrollY());
+        }
+        if(table.getScrollCollapse() != null){
+        	mainConf.put(DTConstants.DT_SCROLLCOLLAPSE, table.getScrollCollapse());
+        }
+        
         // AJAX
         if (table.getProcessing() != null) {
             mainConf.put(DTConstants.DT_B_PROCESSING, table.getProcessing());
@@ -199,7 +210,7 @@ public class MainGenerator {
         // Callbacks
         if(table.getCallbacks() != null){
         	for(Callback callback : table.getCallbacks()){
-        		mainConf.put(callback.getType().getFunction(), new JavascriptSnippet(callback.getFunction()));
+        		mainConf.put(callback.getType().getName(), new JavascriptFunction(callback.getFunction(), callback.getType().getArgs()));
         	}
         }
         

@@ -41,22 +41,22 @@ import com.github.dandelion.datatables.core.feature.FilterType;
  * @author Thibault Duchateau
  * @since 0.1.0
  */
-public class HtmlColumn extends HtmlTag {
+public class HtmlColumn extends HtmlTagWithContent {
 
 	private String uid;
 	private Boolean isHeaderColumn;
-	private String cssCellClass;
-	private String cssCellStyle;
-	private String content;
+	private StringBuilder cssCellClass;
+	private StringBuilder cssCellStyle;
 	private Boolean sortable;
-	private String sortDirection;
+	private List<String> sortDirections;
 	private String sortInit;
 	private String property;
 	private String defaultValue;
 	private Boolean filterable;
 	private Boolean searchable;
 	private String renderFunction;
-
+	private Boolean visible;
+	
 	/**
 	 * <p>
 	 * Type of filtering for the current column.
@@ -72,25 +72,27 @@ public class HtmlColumn extends HtmlTag {
 
 	public HtmlColumn() {
 		init();
-		this.isHeaderColumn = false;
+		setHeaderColumn(false);
 	};
 
 	public HtmlColumn(DisplayType displayType) {
 		init();
 		this.enabledDisplayTypes.clear();
 		this.enabledDisplayTypes.add(displayType);
-		this.isHeaderColumn = false;
+		setHeaderColumn(false);
 	};
 	
 	public HtmlColumn(Boolean isHeader) {
 		init();
-		this.isHeaderColumn = isHeader;
+		setHeaderColumn(isHeader);
 	};
 
 	public HtmlColumn(Boolean isHeader, String content) {
 		init();
-		this.isHeaderColumn = isHeader;
-		this.content = content;
+		setHeaderColumn(isHeader);
+		if(content != null) {
+			setContent(new StringBuilder(content));
+		}
 	}
 
 	/**
@@ -106,89 +108,75 @@ public class HtmlColumn extends HtmlTag {
 		// Searchable
 		this.searchable = true;
 		
+		// Visible
+		this.visible = true;
+		
 		// FilterType
 		this.filterType = FilterType.INPUT;
 
 		// DisplayType default value : all display types are added
-		for (DisplayType type : DisplayType.values()) {
-			this.enabledDisplayTypes.add(type);
-		}
+		this.enabledDisplayTypes.add(DisplayType.ALL);
 	}
-
-	/**
-	 * {@inheritDoc}
-	 */
+	
 	@Override
-	public StringBuffer toHtml() {
-		StringBuffer html = new StringBuffer();
+	protected StringBuilder getHtmlAttributes() {
+		StringBuilder html = new StringBuilder();
+		html.append(writeAttribute("id", this.id));
 		if (this.isHeaderColumn) {
-			html.append("<th");
-
-			if (this.cssClass != null) {
-				html.append(" class=\"");
-				html.append(this.cssClass);
-				html.append("\"");
-			}
-
-			if (this.cssStyle != null) {
-				html.append(" style=\"");
-				html.append(this.cssStyle);
-				html.append("\"");
-			}
+			html.append(writeAttribute("class", this.cssClass));
+			html.append(writeAttribute("style", this.cssStyle));
 		} else {
-			html.append("<td");
-
-			if (this.cssCellClass != null) {
-				html.append(" class=\"");
-				html.append(this.cssCellClass);
-				html.append("\"");
-			}
-
-			if (this.cssCellStyle != null) {
-				html.append(" style=\"");
-				html.append(this.cssCellStyle);
-				html.append("\"");
-			}
+			html.append(writeAttribute("class", this.cssCellClass));
+			html.append(writeAttribute("style", this.cssCellStyle));
 		}
-
-		html.append(">");
-		if (this.content != null) {
-			html.append(content);
-		}
-
-		if (this.isHeaderColumn) {
-			html.append("</th>");
-		} else {
-			html.append("</td>");
-		}
-
 		return html;
+	}
+	
+	private void setHeaderColumn(Boolean isHeaderColumn) {
+		this.isHeaderColumn = isHeaderColumn;
+		if(this.isHeaderColumn) {
+			this.tag = "th";
+		} else {
+			this.tag = "td";
+		}
 	}
 
 	public Boolean isHeaderColumn() {
 		return isHeaderColumn;
 	}
 
-	public String getContent() {
-		return content;
+	public StringBuilder getCssCellClass() {
+		return cssClass;
 	}
 
-	public void setContent(String content) {
-		this.content = content;
-	}
-
-	public String getCssCellClass() {
-		return this.cssCellClass;
-	}
-
-	public HtmlColumn setCssCellClass(String cssCellClass) {
+	public void setCssCellClass(StringBuilder cssCellClass) {
 		this.cssCellClass = cssCellClass;
-		return this;
 	}
 
-	public HtmlColumn setCssCellStyle(String cssCellStyle) {
+	public StringBuilder getCssCellStyle() {
+		return cssCellStyle;
+	}
+
+	public void setCssCellStyle(StringBuilder cssCellStyle) {
 		this.cssCellStyle = cssCellStyle;
-		return this;
+	}
+
+	public void addCssCellClass(String cssCellClass) {
+		if(this.cssCellClass == null) {
+			this.cssCellClass = new StringBuilder();
+		} else {
+			this.cssCellClass.append(CLASS_SEPARATOR);
+		}
+		this.cssCellClass.append(cssCellClass);
+	}
+
+	public void addCssCellStyle(String cssCellStyle) {
+		if(this.cssCellStyle == null) {
+			this.cssCellStyle = new StringBuilder();
+		} else {
+			this.cssCellStyle.append(CSS_SEPARATOR);
+		}
+		this.cssCellStyle.append(cssCellStyle);
 	}
 
 	public Boolean isSortable() {
@@ -239,12 +227,12 @@ public class HtmlColumn extends HtmlTag {
 		this.filterPlaceholder = filterPlaceholder;
 	}
 
-	public String getSortDirection() {
-		return sortDirection;
+	public List<String> getSortDirections() {
+		return sortDirections;
 	}
 
-	public void setSortDirection(String sortDirection) {
-		this.sortDirection = sortDirection;
+	public void setSortDirections(List<String> sortDirections) {
+		this.sortDirections = sortDirections;
 	}
 
 	public String getSortInit() {
@@ -283,7 +271,7 @@ public class HtmlColumn extends HtmlTag {
 	public String toString() {
 		return "HtmlColumn [uid=" + uid + ", isHeaderColumn=" + isHeaderColumn + ", cssCellClass="
 				+ cssCellClass + ", cssCellStyle=" + cssCellStyle + ", content=" + content
-				+ ", sortable=" + sortable + ", sortDirection=" + sortDirection + ", sortInit="
+				+ ", sortable=" + sortable + ", sortDirections=" + sortDirections + ", sortInit="
 				+ sortInit + ", property=" + property + ", defaultValue=" + defaultValue
 				+ ", filterable=" + filterable + ", filterType=" + filterType + ", filterCssClass="
 				+ filterCssClass + ", filterPlaceholder=" + filterPlaceholder
@@ -305,5 +293,13 @@ public class HtmlColumn extends HtmlTag {
 
 	public void setRenderFunction(String rendererFunction) {
 		this.renderFunction = rendererFunction;
+	}
+
+	public Boolean getVisible() {
+		return visible;
+	}
+
+	public void setVisible(Boolean visible) {
+		this.visible = visible;
 	}
 }

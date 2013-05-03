@@ -31,10 +31,8 @@
 package com.github.dandelion.datatables.thymeleaf.dialect;
 
 import java.lang.reflect.InvocationTargetException;
-
 import org.thymeleaf.processor.AttributeNameProcessorMatcher;
 import org.thymeleaf.processor.IAttributeNameProcessorMatcher;
-
 import com.github.dandelion.datatables.core.exception.DataTableProcessingException;
 import com.github.dandelion.datatables.thymeleaf.processor.ajax.TablePipeSizeAttrProcessor;
 import com.github.dandelion.datatables.thymeleaf.processor.ajax.TablePipeliningAttrProcessor;
@@ -47,14 +45,18 @@ import com.github.dandelion.datatables.thymeleaf.processor.ajax.TableUrlAttrProc
 import com.github.dandelion.datatables.thymeleaf.processor.basic.TableAppearAttrProcessor;
 import com.github.dandelion.datatables.thymeleaf.processor.basic.TableAutoWidthAttrProcessor;
 import com.github.dandelion.datatables.thymeleaf.processor.basic.TableCdnAttrProcessor;
+import com.github.dandelion.datatables.thymeleaf.processor.basic.TableDisplayLengthAttrProcessor;
 import com.github.dandelion.datatables.thymeleaf.processor.basic.TableExportAttrProcessor;
 import com.github.dandelion.datatables.thymeleaf.processor.basic.TableExportLinksAttrProcessor;
 import com.github.dandelion.datatables.thymeleaf.processor.basic.TableFilterAttrProcessor;
 import com.github.dandelion.datatables.thymeleaf.processor.basic.TableInfoAttrProcessor;
 import com.github.dandelion.datatables.thymeleaf.processor.basic.TableLabelsAttrProcessor;
+import com.github.dandelion.datatables.thymeleaf.processor.basic.TableLengthChangeAttrProcessor;
 import com.github.dandelion.datatables.thymeleaf.processor.basic.TableLengthMenuAttrProcessor;
 import com.github.dandelion.datatables.thymeleaf.processor.basic.TablePaginateAttrProcessor;
 import com.github.dandelion.datatables.thymeleaf.processor.basic.TablePaginationTypeAttrProcessor;
+import com.github.dandelion.datatables.thymeleaf.processor.basic.TableScrollCollapseAttrProcessor;
+import com.github.dandelion.datatables.thymeleaf.processor.basic.TableScrollYAttrProcessor;
 import com.github.dandelion.datatables.thymeleaf.processor.basic.TableSortAttrProcessor;
 import com.github.dandelion.datatables.thymeleaf.processor.basic.TableStripeClassesAttrProcessor;
 import com.github.dandelion.datatables.thymeleaf.processor.basic.ThFilterTypeAttrProcessor;
@@ -63,6 +65,7 @@ import com.github.dandelion.datatables.thymeleaf.processor.basic.ThSearchableAtt
 import com.github.dandelion.datatables.thymeleaf.processor.basic.ThSortDirectionAttrProcessor;
 import com.github.dandelion.datatables.thymeleaf.processor.basic.ThSortInitAttrProcessor;
 import com.github.dandelion.datatables.thymeleaf.processor.basic.ThSortableAttrProcessor;
+import com.github.dandelion.datatables.thymeleaf.processor.basic.ThVisibleAttrProcessor;
 import com.github.dandelion.datatables.thymeleaf.processor.feature.TbodyCallbackCookieProcessor;
 import com.github.dandelion.datatables.thymeleaf.processor.feature.TbodyCallbackCreatedRowProcessor;
 import com.github.dandelion.datatables.thymeleaf.processor.feature.TbodyCallbackDrawProcessor;
@@ -103,13 +106,18 @@ public enum DatatablesAttrProcessors {
     BASIC_SORTABLE(ThSortableAttrProcessor.class, "sortable", "th"),
     BASIC_FILTERABLE(ThFilterableAttrProcessor.class, "filterable", "th"),
     BASIC_SEARCHABLE(ThSearchableAttrProcessor.class, "searchable", "th"),
+    BASIC_VISIBLE(ThVisibleAttrProcessor.class, "visible", "th"),
     BASIC_FILTER_TYPE(ThFilterTypeAttrProcessor.class, "filterType", "th"),
     BASIC_LABELS(TableLabelsAttrProcessor.class, "labels", "table"),
     BASIC_PAGINATION_TYPE(TablePaginationTypeAttrProcessor.class, "paginationtype", "table"),
     BASIC_LENGTH_MENU(TableLengthMenuAttrProcessor.class, "lengthmenu", "table"),
     BASIC_SORT_INIT(ThSortInitAttrProcessor.class, "sortinit", "th"),
     BASIC_SORT_DIR(ThSortDirectionAttrProcessor.class, "sortdir", "th"),
-    BASIC_STRIP_CLASSES(TableStripeClassesAttrProcessor.class, "stripclasses", "table"),
+    BASIC_STRIP_CLASSES(TableStripeClassesAttrProcessor.class, "stripeclasses", "table"),
+    BASIC_DISPLAY_LENGTH(TableDisplayLengthAttrProcessor.class, "displaylength", "table"),
+    BASIC_LENGTH_CHANGE(TableLengthChangeAttrProcessor.class, "lengthchange", "table"),
+    BASIC_SCROLL_Y(TableScrollYAttrProcessor.class, "scrolly", "table"),
+    BASIC_SCROLL_COLLAPSE(TableScrollCollapseAttrProcessor.class, "scrollcollapse", "table"),
     
     // Plugin processors
     PLUGIN_SCROLLER(TheadScrollerAttrProcessor.class, "scroller", "thead"),

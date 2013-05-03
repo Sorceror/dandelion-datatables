@@ -43,28 +43,18 @@ public class HtmlScript extends HtmlTag {
 	private String src;
 	
 	public HtmlScript(){
+		this.tag = "script";
 	}
 	
 	public HtmlScript(String src){
+		this.tag = "script";
 		this.src = src;
 	}
-	
-	/**
-	 * {@inheritDoc}
-	 */
+
 	@Override
-	public StringBuffer toHtml(){
-		StringBuffer html = new StringBuffer();
-		html.append("<script");
-		
-		if(this.src != null){
-			html.append(" src=\"");
-			html.append(this.src);
-			html.append(" \"");
-		}
-		
-		html.append("></script>");
-		
+	protected StringBuilder getHtmlAttributes() {
+		StringBuilder html = super.getHtmlAttributes();
+		html.append(writeAttribute("src", this.src));
 		return html;
 	}
 	

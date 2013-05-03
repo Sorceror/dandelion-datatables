@@ -59,7 +59,7 @@ public class PdfExport extends AbstractBinaryExport {
 	@Override
 	public void initExport(HtmlTable table) {
 		this.htmlTable = table;
-		if (table.getExportConfMap().containsKey(ExportType.PDF)) {
+		if (table.getExportConfMap() != null && table.getExportConfMap().containsKey(ExportType.PDF)) {
 			this.exportConf = table.getExportConfMap().get(ExportType.PDF);
 		}
 	}
@@ -95,7 +95,9 @@ public class PdfExport extends AbstractBinaryExport {
 
 			for (HtmlColumn column : htmlRow.getColumns()) {
 
-				if (column.getEnabledDisplayTypes().contains(DisplayType.PDF)) {
+				if (column.getEnabledDisplayTypes() != null
+						&& (column.getEnabledDisplayTypes().contains(DisplayType.ALL)
+						|| column.getEnabledDisplayTypes().contains(DisplayType.PDF))) {
 					columnCount++;
 				}
 			}
@@ -107,15 +109,17 @@ public class PdfExport extends AbstractBinaryExport {
 		table.setWidthPercentage(100f);
 
 		// Header
-		if (exportConf.getIncludeHeader()) {
+		if (exportConf != null && exportConf.getIncludeHeader()) {
 
 			for (HtmlRow htmlRow : htmlTable.getHeadRows()) {
 
 				for (HtmlColumn column : htmlRow.getColumns()) {
 
-					if (column.getEnabledDisplayTypes().contains(DisplayType.PDF)) {
+					if (column.getEnabledDisplayTypes() != null 
+							&& (column.getEnabledDisplayTypes().contains(DisplayType.ALL)
+							|| column.getEnabledDisplayTypes().contains(DisplayType.PDF))) {
 						cell = new PdfPCell();
-						cell.setPhrase(new Phrase(column.getContent()));
+						cell.setPhrase(new Phrase(column.getContent().toString()));
 						table.addCell(cell);
 					}
 				}
@@ -126,9 +130,11 @@ public class PdfExport extends AbstractBinaryExport {
 
 			for (HtmlColumn column : htmlRow.getColumns()) {
 
-				if (column.getEnabledDisplayTypes().contains(DisplayType.PDF)) {
+				if (column.getEnabledDisplayTypes() != null
+						&& (column.getEnabledDisplayTypes().contains(DisplayType.ALL)
+						|| column.getEnabledDisplayTypes().contains(DisplayType.PDF))) {
 					cell = new PdfPCell();
-					cell.setPhrase(new Phrase(column.getContent()));
+					cell.setPhrase(new Phrase(column.getContent().toString()));
 					table.addCell(cell);
 				}
 			}

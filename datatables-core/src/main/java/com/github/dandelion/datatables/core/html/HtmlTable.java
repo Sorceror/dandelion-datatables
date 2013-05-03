@@ -38,11 +38,13 @@ import java.util.Map;
 import com.github.dandelion.datatables.core.asset.ExtraConf;
 import com.github.dandelion.datatables.core.asset.ExtraFile;
 import com.github.dandelion.datatables.core.callback.Callback;
+import com.github.dandelion.datatables.core.callback.CallbackType;
 import com.github.dandelion.datatables.core.export.ExportConf;
 import com.github.dandelion.datatables.core.export.ExportLinkPosition;
 import com.github.dandelion.datatables.core.export.ExportProperties;
 import com.github.dandelion.datatables.core.export.ExportType;
 import com.github.dandelion.datatables.core.feature.AbstractFeature;
+import com.github.dandelion.datatables.core.feature.FilteringFeature;
 import com.github.dandelion.datatables.core.feature.PaginationType;
 import com.github.dandelion.datatables.core.plugin.AbstractPlugin;
 import com.github.dandelion.datatables.core.properties.TableProperties;
@@ -89,11 +91,13 @@ public class HtmlTable extends HtmlTag {
 	
 	// Extra features
 	private String scrollY;
+	private Boolean scrollCollapse;
 	private String fixedPosition;
 	private Integer fixedOffsetTop;
 	private List<Callback> callbacks;
 
 	// Internal attributes
+	private HtmlCaption caption;
 	private List<HtmlRow> head = new LinkedList<HtmlRow>();
 	private List<HtmlRow> body = new LinkedList<HtmlRow>();
 	private List<HtmlRow> foot = new LinkedList<HtmlRow>();
@@ -121,6 +125,7 @@ public class HtmlTable extends HtmlTag {
 	private ThemeOption themeOption;
 
 	public HtmlTable(String id, String randomId) {
+		this.tag = "table";
 		init();
 		this.id = id;
 		this.randomId = randomId;
@@ -149,45 +154,41 @@ public class HtmlTable extends HtmlTag {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public StringBuffer toHtml() {
-		StringBuffer html = new StringBuffer();
+	public StringBuilder toHtml() {
+		StringBuilder html = new StringBuilder();
+		html.append(getHtmlOpeningTag());
+		html.append(getHtmlHeader());
+		html.append(getHtmlBody());
+		html.append(getHtmlFooter());
+		html.append(getHtmlClosingTag());
+		return html;
+	}
 
-		if(this.appear != null && !"".equals(this.appear)){
-			html.append("<table style=\"display:none;\" id=\"");
+	private StringBuilder getHtmlHeader() {
+		StringBuilder html = new StringBuilder();
+		if(this.caption != null) {
+			html.append(this.caption.toHtml());
 		}
-		else{
-			html.append("<table id=\"");
-		}
-		html.append(this.id);
-		html.append("\"");
-
-		if (this.cssClass != null) {
-			html.append(" class=\"");
-			html.append(this.cssClass);
-			html.append("\"");
-		}
-
-		if (this.cssStyle != null) {
-			html.append(" style=\"");
-			html.append(this.cssStyle);
-			html.append("\"");
-		}
-
-		html.append(">");
 		html.append("<thead>");
-
 		for (HtmlRow row : this.head) {
 			html.append(row.toHtml());
 		}
 		html.append("</thead>");
-		html.append("<tbody>");
+		return html;
+	}
 
+	private StringBuilder getHtmlBody() {
+		StringBuilder html = new StringBuilder();
+		html.append("<tbody>");
 		for (HtmlRow row : this.body) {
 			html.append(row.toHtml());
 		}
-
 		html.append("</tbody>");
+		return html;
+	}
 
+	private StringBuilder getHtmlFooter() {
+		StringBuilder html = new StringBuilder();
 		if (!this.foot.isEmpty()) {
 			html.append("<tfoot>");
 			for (HtmlRow row : this.foot) {
@@ -196,9 +197,28 @@ public class HtmlTable extends HtmlTag {
 
 			html.append("</tfoot>");
 		}
-		html.append("</table>");
-		
 		return html;
+	}
+
+	protected StringBuilder getHtmlAttributes() {
+		if(this.appear != null && !"".equals(this.appear)){
+			addCssStyle("display:none");
+		}
+		
+		StringBuilder html = new StringBuilder();
+		html.append(writeAttribute("id", this.id));
+		html.append(writeAttribute("class", this.cssClass));
+		html.append(writeAttribute("style", this.cssStyle));
+		return html;
+	}
+
+
+	public HtmlCaption getCaption(){
+		return caption;
+	}
+
+	public void setCaption(HtmlCaption caption){
+		this.caption = caption;
 	}
 
 	public List<HtmlRow> getHeadRows() {
@@ -425,6 +445,14 @@ public class HtmlTable extends HtmlTag {
 	public void setScrollY(String scrollY) {
 		this.scrollY = scrollY;
 	}
+	
+	public Boolean getScrollCollapse() {
+		return scrollCollapse;
+	}
+
+	public void setScrollCollapse(Boolean scrollCollapse) {
+		this.scrollCollapse = scrollCollapse;
+	}
 
 	public List<ExtraFile> getExtraFiles() {
 		return extraFiles;
@@ -548,6 +576,10 @@ public class HtmlTable extends HtmlTag {
 		return exportConfMap;
 	}
 
+	public void configureExport(ExportType exportType, ExportConf exportConf){
+		this.exportConfMap.put(exportType, exportConf);
+	}
+	
 	public void setExportConfMap(Map<ExportType, ExportConf> exportConfs) {
 		this.exportConfMap = exportConfs;
 	}
@@ -647,6 +679,25 @@ public class HtmlTable extends HtmlTag {
 		this.callbacks.add(callback);
 	}
 
+	public Boolean hasCallback(CallbackType callbackType){
+		if(this.callbacks != null){
+			for(Callback callback : this.callbacks){
+				if(callback.getType().equals(callbackType)){
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	
+	public Callback getCallback(CallbackType callbackType){
+		for(Callback callback : this.callbacks){
+			if(callback.getType().equals(callbackType)){
+				return callback;
+			}
+		}
+		return null;
+	}
 	public String getLengthMenu() {
 		return lengthMenu;
 	}

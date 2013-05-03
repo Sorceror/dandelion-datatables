@@ -39,7 +39,7 @@ import com.github.dandelion.datatables.core.html.HtmlRow;
 import com.github.dandelion.datatables.core.html.HtmlTable;
 
 /**
- * 
+ * Default class used to export in the CSV format.
  *
  * @author Thibault Duchateau
  */
@@ -56,7 +56,7 @@ public class CsvExport extends AbstractCharExport {
 
 	@Override
 	public void processExport(Writer output) throws ExportException {
-		StringBuffer buffer = new StringBuffer();
+		StringBuilder buffer = new StringBuilder();
 
 		if(table.getExportConfMap().get(ExportType.CSV).getIncludeHeader()){
 			for(HtmlRow row : table.getHeadRows()){

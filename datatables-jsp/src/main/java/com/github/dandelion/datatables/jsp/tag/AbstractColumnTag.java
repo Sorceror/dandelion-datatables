@@ -30,6 +30,7 @@
 package com.github.dandelion.datatables.jsp.tag;
 
 import java.lang.reflect.InvocationTargetException;
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,6 +44,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.github.dandelion.datatables.core.asset.DisplayType;
+import com.github.dandelion.datatables.core.constants.Direction;
 import com.github.dandelion.datatables.core.feature.FilterType;
 import com.github.dandelion.datatables.core.html.HtmlColumn;
 
@@ -79,11 +81,13 @@ public abstract class AbstractColumnTag extends BodyTagSupport {
 	protected String sortInit;
 	protected Boolean filterable = false;
 	protected Boolean searchable;
+	protected Boolean visible;
 	protected String filterType;
 	protected String filterCssClass = "";
 	protected String filterPlaceholder = "";
 	protected String display;
 	protected String renderFunction;
+	protected String format;
 
 	/**
 	 * Add a column to the table when using DOM source.
@@ -98,6 +102,8 @@ public abstract class AbstractColumnTag extends BodyTagSupport {
 
 		// Init the column
 		HtmlColumn column = new HtmlColumn(isHeader, content);
+		
+		// UID
 		if (StringUtils.isNotBlank(this.uid)) {
 			column.setUid(this.uid);
 		}
@@ -117,6 +123,11 @@ public abstract class AbstractColumnTag extends BodyTagSupport {
 			column.setSearchable(this.searchable);
 		}
 		
+		// Visible
+		if (this.visible!= null) {
+			column.setVisible(this.visible);
+		}
+				
 		// Enabled display types
 		if (StringUtils.isNotBlank(this.display)) {
 			List<DisplayType> enabledDisplayTypes = new ArrayList<DisplayType>();
@@ -138,10 +149,10 @@ public abstract class AbstractColumnTag extends BodyTagSupport {
 		// Non-header columns
 		if (!isHeader) {
 			if (StringUtils.isNotBlank(this.cssCellClass)) {
-				column.setCssCellClass(this.cssCellClass);
+				column.addCssCellClass(this.cssCellClass);
 			}
 			if (StringUtils.isNotBlank(this.cssCellStyle)) {
-				column.setCssCellStyle(this.cssCellStyle);
+				column.addCssCellStyle(this.cssCellStyle);
 			}
 
 			parent.getTable().getLastBodyRow().addColumn(column);
@@ -149,13 +160,30 @@ public abstract class AbstractColumnTag extends BodyTagSupport {
 		// Header columns
 		else {
 			if (StringUtils.isNotBlank(this.cssClass)) {
-				column.setCssClass(new StringBuffer(this.cssClass));
+				column.setCssClass(new StringBuilder(this.cssClass));
 			}
 			if (StringUtils.isNotBlank(this.cssStyle)) {
-				column.setCssStyle(new StringBuffer(this.cssStyle));
+				column.setCssStyle(new StringBuilder(this.cssStyle));
 			}
 
-			column.setSortDirection(this.sortDirection);
+			// Sort direction
+			if (StringUtils.isNotBlank(sortDirection)) {
+				List<String> sortDirections = new ArrayList<String>();
+				String[] sortDirectionArray = sortDirection.trim().toUpperCase().split(",");
+
+				for (String direction : sortDirectionArray) {
+					try {
+						sortDirections.add(Direction.valueOf(direction).getValue());
+					} catch (IllegalArgumentException e) {
+						logger.error("{} is not a valid value among {}. Please choose a valid one.",
+								direction, Direction.values());
+						throw new JspException(e);
+					}
+				}
+
+				column.setSortDirections(sortDirections);
+			}
+			
 			column.setSortInit(this.sortInit);
 			column.setFilterable(this.filterable);
 
@@ -181,7 +209,10 @@ public abstract class AbstractColumnTag extends BodyTagSupport {
 
 	
 	/**
+	 * <p>
 	 * Add a column to the table when using AJAX source.
+	 * <p>
+	 * Column are always marked as "header" using an AJAX source.
 	 * 
 	 * @param isHeader
 	 * @param content
@@ -193,23 +224,84 @@ public abstract class AbstractColumnTag extends BodyTagSupport {
 
 		HtmlColumn column = new HtmlColumn(true, this.title);
 
-		// All display types are added
-		for (DisplayType type : DisplayType.values()) {
-			column.getEnabledDisplayTypes().add(type);
+		// UID
+		if (StringUtils.isNotBlank(this.uid)) {
+			column.setUid(this.uid);
 		}
+				
 		column.setProperty(property);
-		column.setFilterable(filterable);
-		if (searchable != null) {
-			column.setSearchable(searchable);
-		}
+		
 		column.setDefaultValue(StringUtils.isNotBlank(defaultValue) ? defaultValue : "");
 		
-		if (this.sortable != null) {
-			column.setSortable(this.sortable);
-		}
-
 		if(StringUtils.isNotBlank(this.renderFunction)){
 			column.setRenderFunction(this.renderFunction);
+		}
+		// Sorting
+		if(sortable != null){
+			column.setSortable(this.sortable);
+		}
+		if(sortDirection != null){
+			
+			// Sort direction
+			if (StringUtils.isNotBlank(sortDirection)) {
+				List<String> sortDirections = new ArrayList<String>();
+				String[] sortDirectionArray = sortDirection.trim().toUpperCase().split(",");
+
+				for (String direction : sortDirectionArray) {
+					try {
+						sortDirections.add(Direction.valueOf(direction).getValue());
+					} catch (IllegalArgumentException e) {
+						logger.error("{} is not a valid value among {}. Please choose a valid one.",
+								direction, Direction.values());
+						throw new JspException(e);
+					}
+				}
+
+				column.setSortDirections(sortDirections);
+			}
+		}
+		if(sortInit != null){
+			column.setSortInit(this.sortInit);
+		}
+
+		// Filtering
+		if(filterable != null){
+			column.setFilterable(filterable);
+		}
+		
+		if(searchable != null){
+			column.setSearchable(searchable);
+		}
+
+		// Visible
+		if (this.visible!= null) {
+			column.setVisible(this.visible);
+		}
+		
+		// Styling
+		if(StringUtils.isNotBlank(cssClass)){
+			column.setCssClass(new StringBuilder(this.cssClass));
+		}
+		if(StringUtils.isNotBlank(cssStyle)){
+			column.setCssStyle(new StringBuilder(this.cssStyle));
+		}
+		
+		// Exporting
+		if (StringUtils.isNotBlank(this.display)) {
+			List<DisplayType> enabledDisplayTypes = new ArrayList<DisplayType>();
+			String[] displayTypes = this.display.trim().toUpperCase().split(",");
+
+			for (String displayType : displayTypes) {
+				try {
+					enabledDisplayTypes.add(DisplayType.valueOf(displayType));
+				} catch (IllegalArgumentException e) {
+					logger.error("{} is not a valid value among {}. Please choose a valid one.",
+							displayType, DisplayType.values());
+					throw new JspException(e);
+				}
+			}
+
+			column.setEnabledDisplayTypes(enabledDisplayTypes);
 		}
 		
 		// Using AJAX source, since there is only one iteration on the body,
@@ -223,14 +315,24 @@ public abstract class AbstractColumnTag extends BodyTagSupport {
 
 		if (StringUtils.isNotBlank(property)) {
 
+			Object propertyValue = null;
 			try {
-				Object propertyValue = PropertyUtils.getNestedProperty(parent.getCurrentObject(), this.property.trim());
-				if(propertyValue != null){
+				propertyValue = PropertyUtils.getNestedProperty(parent.getCurrentObject(), this.property.trim());
+
+				// If a format exists, we format the property
+				if(StringUtils.isNotBlank(format) && propertyValue != null){
+					
+					MessageFormat messageFormat = new MessageFormat(format);
+					return messageFormat.format(new Object[]{propertyValue});
+				}
+				else if(StringUtils.isBlank(format) && propertyValue != null){
 					return propertyValue.toString();
 				}
-				else 
+				else{
 					if(StringUtils.isNotBlank(defaultValue)){
-					return defaultValue.trim();
+						return defaultValue.trim();
+					
+					}
 				}
 			} catch (NestedNullException e) {
 				if(StringUtils.isNotBlank(defaultValue)){
@@ -246,7 +348,10 @@ public abstract class AbstractColumnTag extends BodyTagSupport {
 			} catch (NoSuchMethodException e) {
 				logger.error("Unable to get the value for the given property {}", this.property);
 				throw new JspException(e);
-			}
+			} catch (IllegalArgumentException e) {
+	            logger.error("Wrong MessageFormat pattern : {}", format);
+	            return propertyValue.toString();
+	        }
 		}
 		
 		return "";
@@ -329,6 +434,14 @@ public abstract class AbstractColumnTag extends BodyTagSupport {
 	public void setSearchable(Boolean searchable) {
 		this.searchable = searchable;
 	}
+
+	public Boolean getVisible() {
+		return visible;
+	}
+
+	public void setVisible(Boolean visible) {
+		this.visible = visible;
+	}
 	
 	public String getFilterType() {
 		return filterType;
@@ -392,5 +505,13 @@ public abstract class AbstractColumnTag extends BodyTagSupport {
 
 	public void setRenderFunction(String renderFunction) {
 		this.renderFunction = renderFunction;
+	}
+
+	public String getFormat() {
+		return format;
+	}
+
+	public void setFormat(String format) {
+		this.format = format;
 	}
 }

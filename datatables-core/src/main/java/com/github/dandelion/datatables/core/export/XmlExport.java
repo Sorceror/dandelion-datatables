@@ -45,7 +45,7 @@ import com.github.dandelion.datatables.core.html.HtmlRow;
 import com.github.dandelion.datatables.core.html.HtmlTable;
 
 /**
- * TODO
+ * Default class used to export in the XML format.
  *
  * @author Thibault Duchateau
  */
@@ -66,13 +66,12 @@ public class XmlExport extends AbstractCharExport {
 		
 		for(HtmlRow row : table.getHeadRows()){
 			for(HtmlColumn column : row.getColumns()){
-				headers.add(StringUtils.uncapitalize(column.getContent()));
+				headers.add(StringUtils.uncapitalize(column.getContent().toString()));
 			}
 		}
 
 		XMLOutputFactory outputFactory = XMLOutputFactory.newInstance();
 		XMLStreamWriter writer = null;
-//		StringWriter sw = new StringWriter();
 		
 		try {
 			writer = outputFactory.createXMLStreamWriter(output);
@@ -84,7 +83,7 @@ public class XmlExport extends AbstractCharExport {
 
 				int i = 0;
 				for (HtmlColumn column : row.getColumns()) {
-					writer.writeAttribute(headers.get(i), column.getContent());
+					writer.writeAttribute(headers.get(i), column.getContent().toString());
 					i++;
 				}
 
@@ -94,14 +93,10 @@ public class XmlExport extends AbstractCharExport {
 			writer.writeEndElement();
 			writer.writeEndDocument();
 			writer.flush();
-//			output.write(.toString());
 
 		} catch (XMLStreamException e) {
 			throw new ExportException(e);
 		} 
-//		catch (IOException e) {
-//			throw new ExportException(e);
-//		} 
 		finally {
 			try {
 				writer.close();
@@ -109,7 +104,5 @@ public class XmlExport extends AbstractCharExport {
 				throw new ExportException(e);
 			}
 		}
-
-//		return sw.toString();
 	}
 }

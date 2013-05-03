@@ -42,9 +42,9 @@ import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 
+import com.github.dandelion.datatables.mock.Mock;
+import com.github.dandelion.datatables.mock.Person;
 import com.github.dandelion.datatables.thymeleaf.dialect.DataTablesDialect;
-import com.github.dandelion.datatables.utils.Mock;
-import com.github.dandelion.datatables.utils.Person;
 
 public class ThymeleafServlet extends HttpServlet {
 
@@ -60,8 +60,8 @@ public class ThymeleafServlet extends HttpServlet {
 			IOException {
 
 		// Get the template's name to process
-		String templateName = request.getRequestURL().substring(request.getRequestURL().lastIndexOf("-") + 1, request.getRequestURL().length());
-		
+		String templateName = request.getRequestURL().toString().split("/thymeleaf")[1];
+
 		// Adapt the response headers
 		response.setContentType("text/html");
 		response.setStatus(HttpServletResponse.SC_OK);
